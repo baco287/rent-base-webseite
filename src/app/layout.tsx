@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     siteName: "RentBase",
     title: SITE.title,
     description: SITE.description,
-    images: [{ url: "/brand/rentbase-logo.png", width: 1774, height: 887, alt: "RentBase – Rental Solutions" }],
+    images: [{ url: "/brand/rentbase-og.png", width: 1200, height: 630, alt: "RentBase – Rental Solutions" }],
   },
-  twitter: { card: "summary_large_image", title: SITE.title, description: SITE.description, images: ["/brand/rentbase-logo.png"] },
+  twitter: { card: "summary_large_image", title: SITE.title, description: SITE.description, images: ["/brand/rentbase-og.png"] },
   robots: { index: true, follow: true },
   formatDetection: { telephone: false },
 };

@@ -42,4 +42,6 @@ pdftoppm -r 200 -png -f 1 -l 2 uebergabeprotokoll-beispiel.pdf seite   # danach 
 
 ## Logo
 
-`public/brand/rentbase-logo.webp` ist das unveränderte Originallogo (PNG-Kopie pixelgleich für OpenGraph). Navigation und Footer zeigen per CSS einen Ausschnitt der Wortmarke (`src/components/ui/logo.tsx`). Das Original hat einen leicht grauen Verlaufshintergrund; für eine saubere Darstellung wird eine freigestellte Variante (SVG oder transparentes PNG) benötigt.
+- `public/brand/rentbase-logo.png`: freigestelltes Originallogo (transparent, 1774 × 887), unverändert.
+- `public/brand/rentbase-wordmark.webp`: verkleinerter Ausschnitt der Wortmarke für Navigation und Footer (`src/components/ui/logo.tsx`).
+- `public/brand/rentbase-og.png`: Vorschaubild für geteilte Links (1200 × 630), Originallogo mittig auf Weiß.
