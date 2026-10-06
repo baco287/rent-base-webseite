@@ -1,6 +1,7 @@
 import { Plus } from "lucide-react";
 import { FAQ } from "@/content/faq";
 import { SITE } from "@/content/site";
+import { WhatsAppLink } from "../ui/whatsapp";
 import { Container, SectionHeader } from "../ui/primitives";
 
 /** Akkordeon mit nativem details/summary: tastaturbedienbar, ohne JavaScript, Inhalte für Suchmaschinen sichtbar. */
@@ -14,8 +15,8 @@ export function Faq() {
             Deine Frage ist nicht dabei? Schreib uns an{" "}
             <a href={`mailto:${SITE.contactEmail}`} className="font-medium whitespace-nowrap text-ink underline decoration-gold-300 underline-offset-4 transition-colors hover:decoration-gold-600">
               {SITE.contactEmail}
-            </a>
-            .
+            </a>{" "}
+            oder <WhatsAppLink variant="md" className="h-auto! border-0! px-0! text-ink underline decoration-[#25D366]/50 underline-offset-4 hover:decoration-[#25D366]">per WhatsApp</WhatsAppLink>.
           </p>
         </div>
         <div className="border-t border-line">

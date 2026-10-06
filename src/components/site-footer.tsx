@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SITE, TRIAL } from "@/content/site";
+import { SITE, TRIAL, WHATSAPP } from "@/content/site";
 import { Container } from "./ui/primitives";
 import { Wordmark } from "./ui/logo";
 
@@ -17,6 +17,7 @@ const COLUMNS = [
     title: "Unternehmen",
     links: [
       { href: `mailto:${SITE.contactEmail}`, label: "Kontakt" },
+      { href: WHATSAPP.href, label: `WhatsApp ${WHATSAPP.display}` },
       { href: TRIAL.href, label: "Testzugang anfragen" },
     ],
   },
@@ -47,7 +48,7 @@ export function SiteFooter() {
                   {l.href.startsWith("/") ? (
                     <Link href={l.href} className="text-ink-2 transition-colors hover:text-ink">{l.label}</Link>
                   ) : (
-                    <a href={l.href} className="text-ink-2 transition-colors hover:text-ink">{l.label}</a>
+                    <a href={l.href} {...(l.href.startsWith("https://wa.me/") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="text-ink-2 transition-colors hover:text-ink">{l.label}</a>
                   )}
                 </li>
               ))}

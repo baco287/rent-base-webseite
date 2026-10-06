@@ -15,12 +15,20 @@ export const SITE = {
  * „Kostenlos testen“: Es gibt noch keine Selbstregistrierung. Testzugänge werden persönlich eingerichtet,
  * deshalb führt der Aufruf vorerst zu einer vorbereiteten E-Mail. Später hier auf eine Registrierungsseite umstellen.
  */
+/** WhatsApp-Kontakt für Anfragen und Testzugänge. Nummer im internationalen Format ohne +, Leerzeichen. */
+export const WHATSAPP = {
+  number: "491791528109",
+  display: "+49 179 1528109",
+  href: `https://wa.me/491791528109?text=${encodeURIComponent("Hallo, ich interessiere mich für RentBase und möchte es kostenlos testen.")}`,
+  label: "Per WhatsApp anfragen",
+} as const;
+
 export const TRIAL = {
   label: "Kostenlos testen",
   href: `mailto:${SITE.contactEmail}?subject=${encodeURIComponent("Testzugang RentBase")}&body=${encodeURIComponent(
     "Guten Tag,\n\nich möchte RentBase kostenlos testen.\n\nFirma:\nAnzahl Fahrzeuge:\nTelefon (optional):\n",
   )}`,
-  note: "Wir richten deinen Testzugang persönlich ein.",
+  note: "Wir richten deinen Testzugang persönlich ein, per E-Mail oder WhatsApp.",
 } as const;
 
 export const NAV = [

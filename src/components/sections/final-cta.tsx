@@ -1,5 +1,6 @@
 import { TRIAL } from "@/content/site";
 import { Button, Container } from "../ui/primitives";
+import { WhatsAppLink } from "../ui/whatsapp";
 
 export function FinalCta() {
   return (
@@ -11,11 +12,12 @@ export function FinalCta() {
             Bereit für eine einfachere Vermietung?
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-[17px] leading-relaxed text-white/75">Teste RentBase und verwalte deine Fahrzeugvermietung zentral, digital und übersichtlich.</p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button href={TRIAL.href} size="lg" arrow className="w-full bg-white! text-ink! hover:bg-gold-50! sm:w-auto">
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 md:flex-row md:flex-wrap">
+            <Button href={TRIAL.href} size="lg" arrow className="w-full bg-white! text-ink! hover:bg-gold-50! md:w-auto">
               RentBase kostenlos testen
             </Button>
-            <Button href="#funktionen" size="lg" variant="ghost" className="w-full border border-white/25 text-white! hover:border-white/60 sm:w-auto">
+            <WhatsAppLink variant="button" className="w-full justify-center border-white/25 text-white hover:border-white/60 md:w-auto" />
+            <Button href="#funktionen" size="lg" variant="ghost" className="w-full border border-white/25 text-white! hover:border-white/60 md:w-auto">
               Funktionen ansehen
             </Button>
           </div>

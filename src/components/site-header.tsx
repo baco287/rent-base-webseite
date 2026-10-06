@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import { NAV, SITE, TRIAL } from "@/content/site";
 import { Button, Container } from "./ui/primitives";
 import { Wordmark } from "./ui/logo";
+import { WhatsAppLink } from "./ui/whatsapp";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -50,6 +51,7 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-2 lg:flex">
           <Button href={SITE.appLoginUrl} variant="ghost">Anmelden</Button>
+          <WhatsAppLink variant="icon" className="text-ink hover:bg-surface" />
           <Button href={TRIAL.href}>{TRIAL.label}</Button>
         </div>
 
@@ -80,6 +82,7 @@ export function SiteHeader() {
           </nav>
           <div className="mt-auto grid gap-3 pb-4">
             <Button href={TRIAL.href} size="lg">{TRIAL.label}</Button>
+            <WhatsAppLink variant="button" className="justify-center border-line-strong bg-white text-ink hover:bg-surface" />
             <Button href={SITE.appLoginUrl} variant="secondary" size="lg">Anmelden</Button>
           </div>
         </Container>

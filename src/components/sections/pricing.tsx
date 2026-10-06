@@ -1,6 +1,7 @@
 import { Check } from "lucide-react";
 import { PLACEHOLDER_NOTE, PLANS, PRICE_NOTE, PRICING_IS_PLACEHOLDER, formatPrice, visibleFeatures } from "@/content/pricing";
-import { TRIAL } from "@/content/site";
+import { SITE, TRIAL } from "@/content/site";
+import { WhatsAppLink } from "../ui/whatsapp";
 import { Button, Container, SectionHeader } from "../ui/primitives";
 
 export function Pricing() {
@@ -47,6 +48,12 @@ export function Pricing() {
         <div className="mt-12 text-center text-sm text-ink-3">
           <p>{PRICE_NOTE}</p>
           {PRICING_IS_PLACEHOLDER && <p className="mt-1">{PLACEHOLDER_NOTE}</p>}
+          <p className="mt-5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-ink-2">
+            Fragen zu den Tarifen? Schreib uns an
+            <a href={`mailto:${SITE.contactEmail}`} className="font-medium text-ink underline decoration-gold-300 underline-offset-4 hover:decoration-gold-600">{SITE.contactEmail}</a>
+            oder
+            <WhatsAppLink variant="md" className="h-auto! border-0! px-0! text-ink underline decoration-[#25D366]/50 underline-offset-4 hover:decoration-[#25D366]">per WhatsApp</WhatsAppLink>
+          </p>
         </div>
       </Container>
     </section>

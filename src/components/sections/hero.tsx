@@ -1,5 +1,6 @@
 import { Check } from "lucide-react";
 import { TRIAL, TRUST_POINTS } from "@/content/site";
+import { WhatsAppLink } from "../ui/whatsapp";
 import { BENEFITS } from "@/content/product";
 import { Button, Container } from "../ui/primitives";
 import { DashboardScreen } from "../mockups/desktop-screens";
@@ -25,7 +26,10 @@ export function Hero() {
             <Button href={TRIAL.href} size="lg" arrow className="w-full sm:w-auto">{TRIAL.label}</Button>
             <Button href="#produkt" variant="secondary" size="lg" className="w-full sm:w-auto">RentBase entdecken</Button>
           </div>
-          <ul className="mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-ink-3">
+          <p className="mt-4 text-sm text-ink-3">
+            oder direkt <WhatsAppLink variant="md" className="h-auto! border-0! px-1! text-ink underline decoration-[#25D366]/50 underline-offset-4 hover:decoration-[#25D366]">per WhatsApp anfragen</WhatsAppLink>
+          </p>
+          <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-ink-3">
             {TRUST_POINTS.map((t) => (
               <li key={t} className="flex items-center gap-2">
                 <Check aria-hidden className="size-4 text-gold-500" strokeWidth={2.25} />

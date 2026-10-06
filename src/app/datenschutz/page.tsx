@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Address, LegalPage } from "@/components/legal-page";
 import { COMPANY } from "@/content/company";
-import { SITE } from "@/content/site";
+import { SITE, WHATSAPP } from "@/content/site";
 
 export const metadata: Metadata = { title: "Datenschutzerklärung", alternates: { canonical: "/datenschutz" } };
 
@@ -29,7 +29,7 @@ export default function DatenschutzPage() {
         <li>Diese Website setzt keine Cookies und verwendet keine Analyse- oder Trackingwerkzeuge.</li>
         <li>Es werden keine Inhalte von Drittanbietern geladen. Schriften, Bilder und Skripte liegen auf unserem eigenen Server.</li>
         <li>Die Website wird auf einem Server in Deutschland betrieben. Zugriffsprotokolle mit IP-Adressen werden nicht gespeichert.</li>
-        <li>Personenbezogene Daten verarbeiten wir nur, wenn Sie uns kontaktieren, zum Beispiel per E-Mail.</li>
+        <li>Personenbezogene Daten verarbeiten wir nur, wenn Sie uns kontaktieren, zum Beispiel per E-Mail oder WhatsApp.</li>
       </ul>
 
       <h2>3. Hosting und Bereitstellung der Website</h2>
@@ -58,13 +58,24 @@ export default function DatenschutzPage() {
         Unsere E-Mail-Postfächer werden von der ALL-INKL.COM – Neue Medien Münnich, Inhaber René Münnich, Hauptstraße 68, 02742 Friedersdorf, Deutschland, betrieben. Mit dem Anbieter besteht ein Vertrag zur Auftragsverarbeitung gemäß Art. 28 DSGVO.
       </p>
 
-      <h2>7. Links zur Anwendung</h2>
+      <h2>7. Kontakt per WhatsApp</h2>
+      <p>
+        Sie können uns über den Messenger WhatsApp unter {WHATSAPP.display} erreichen. Die Website selbst bindet WhatsApp nicht ein und überträgt beim Aufruf keine Daten an WhatsApp. Erst wenn Sie auf einen WhatsApp-Link klicken, öffnet sich WhatsApp mit einer vorbereiteten Nachricht; gesendet wird sie erst, wenn Sie selbst auf „Senden“ tippen.
+      </p>
+      <p>
+        Anbieter von WhatsApp ist die WhatsApp Ireland Limited, Merrion Road, Dublin 4, D04 X2K5, Irland, ein Unternehmen der Meta-Gruppe. Wenn Sie uns über WhatsApp schreiben, verarbeiten wir Ihre Telefonnummer, Ihren WhatsApp-Namen, Ihr Profilbild, sofern freigegeben, und den Inhalt Ihrer Nachrichten, um Ihre Anfrage zu beantworten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, soweit Ihre Anfrage auf einen Vertragsschluss gerichtet ist, im Übrigen Art. 6 Abs. 1 lit. f DSGVO.
+      </p>
+      <p>
+        Für die Nutzung von WhatsApp gelten zusätzlich die Datenschutzbestimmungen von WhatsApp. WhatsApp kann Daten, insbesondere Metadaten der Kommunikation, auch in Länder außerhalb der Europäischen Union übermitteln, etwa in die USA. Die Meta-Gruppe ist nach dem EU-US Data Privacy Framework zertifiziert, für das ein Angemessenheitsbeschluss der Europäischen Kommission besteht. Die Inhalte der Nachrichten sind Ende-zu-Ende-verschlüsselt. Wenn Sie das nicht möchten, schreiben Sie uns bitte per E-Mail.
+      </p>
+
+      <h2>8. Links zur Anwendung</h2>
       <p>Die Links „Anmelden“ führen zur Anwendung RentBase unter {SITE.appLoginUrl.replace("https://", "").replace("/login", "")}. Dort gelten die Datenschutzhinweise und Vereinbarungen der Anwendung.</p>
 
-      <h2>8. Empfänger und Übermittlung in Drittländer</h2>
-      <p>Eine Weitergabe Ihrer Daten an Dritte erfolgt nur an die oben genannten Auftragsverarbeiter oder wenn wir gesetzlich dazu verpflichtet sind. Eine Übermittlung in Länder außerhalb der Europäischen Union oder des Europäischen Wirtschaftsraums findet nicht statt.</p>
+      <h2>9. Empfänger und Übermittlung in Drittländer</h2>
+      <p>Eine Weitergabe Ihrer Daten an Dritte erfolgt nur an die oben genannten Dienstleister oder wenn wir gesetzlich dazu verpflichtet sind. Beim Besuch der Website und bei Kontakt per E-Mail findet keine Übermittlung in Länder außerhalb der Europäischen Union oder des Europäischen Wirtschaftsraums statt. Bei Kontakt per WhatsApp gelten die Hinweise in Abschnitt 7.</p>
 
-      <h2>9. Ihre Rechte</h2>
+      <h2>10. Ihre Rechte</h2>
       <p>Sie haben nach der DSGVO insbesondere folgende Rechte:</p>
       <ul>
         <li>Auskunft über die zu Ihrer Person gespeicherten Daten (Art. 15 DSGVO)</li>
@@ -76,14 +87,14 @@ export default function DatenschutzPage() {
       </ul>
       <p>Wenden Sie sich dazu formlos an <a href={`mailto:${c.email}`}>{c.email}</a>.</p>
 
-      <h2>10. Beschwerderecht bei einer Aufsichtsbehörde</h2>
+      <h2>11. Beschwerderecht bei einer Aufsichtsbehörde</h2>
       <p>Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren. Für uns zuständig ist:</p>
       <Address lines={["Berliner Beauftragte für Datenschutz und Informationsfreiheit", "Alt-Moabit 59–61", "10555 Berlin"]} />
 
-      <h2>11. Keine automatisierte Entscheidungsfindung</h2>
+      <h2>12. Keine automatisierte Entscheidungsfindung</h2>
       <p>Eine automatisierte Entscheidungsfindung einschließlich Profiling gemäß Art. 22 DSGVO findet nicht statt.</p>
 
-      <h2>12. Änderungen</h2>
+      <h2>13. Änderungen</h2>
       <p>Wir passen diese Datenschutzerklärung an, wenn sich die Website oder die rechtlichen Anforderungen ändern. Es gilt die jeweils hier veröffentlichte Fassung.</p>
     </LegalPage>
   );
