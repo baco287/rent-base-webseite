@@ -1,14 +1,11 @@
-// Tarife: einzige Quelle für Preise, Fahrzeuglimits und Leistungen. PLATZHALTER – noch nicht final.
-//
-// Leistungen mit status "planned" gibt es in RentBase noch nicht. Sie werden öffentlich nur angezeigt,
-// wenn SHOW_PLANNED_FEATURES auf true steht (dann mit dem Hinweis „in Vorbereitung“).
+// Tarife: einzige Quelle für Preise, Fahrzeuglimits und Leistungen.
+// Stand 06.10.2026: Alle Funktionen sind derzeit in jedem Tarif enthalten; die Tarife unterscheiden sich nur nach Flottengröße.
 
-export const PRICING_IS_PLACEHOLDER = true;
-export const SHOW_PLANNED_FEATURES = false;
-export const PRICE_NOTE = "Alle Preise zzgl. MwSt.";
+export const PRICING_IS_PLACEHOLDER = false;
+export const PRICE_NOTE = "Alle Preise monatlich, zzgl. MwSt.";
 export const PLACEHOLDER_NOTE = "Tarife und Preise dienen aktuell als Platzhalter.";
-
-export type PlanFeature = { label: string; status?: "available" | "planned" };
+export const ALL_FEATURES_NOTE = "Alle Funktionen sind derzeit in jedem Tarif enthalten.";
+export const LARGER_FLEET_NOTE = "Mehr als 100 Fahrzeuge? Sprich uns an, wir finden einen passenden Tarif.";
 
 export type Plan = {
   id: "start" | "business" | "pro";
@@ -17,59 +14,28 @@ export type Plan = {
   vehicleLimit: number;
   tagline: string;
   recommended?: boolean;
-  /** Tarif, dessen Leistungen vollständig enthalten sind */
-  includes?: string;
-  features: PlanFeature[];
 };
 
 export const PLANS: Plan[] = [
-  {
-    id: "start",
-    name: "Start",
-    pricePerMonth: 19,
-    vehicleLimit: 5,
-    tagline: "Für kleine Vermieter.",
-    features: [
-      { label: "Buchungen und Dispo-Kalender" },
-      { label: "Kundenverwaltung" },
-      { label: "Digitale Mietverträge" },
-      { label: "Rechnungen" },
-      { label: "Digitale Übergabe und Rückgabe" },
-    ],
-  },
-  {
-    id: "business",
-    name: "Business",
-    pricePerMonth: 39,
-    vehicleLimit: 25,
-    tagline: "Für Vermieter mit Team.",
-    recommended: true,
-    includes: "Start",
-    features: [
-      { label: "Mitarbeiter mit Rollen" },
-      { label: "Schadenakten mit Fotos" },
-      { label: "Zahlungen und Kaution" },
-      { label: "Tagesübersicht mit Kennzahlen" },
-      { label: "Mahnwesen mit Zahlungserinnerung und Mahnstufen" },
-    ],
-  },
-  {
-    id: "pro",
-    name: "Pro",
-    pricePerMonth: 69,
-    vehicleLimit: 100,
-    tagline: "Für größere Flotten.",
-    includes: "Business",
-    features: [
-      { label: "Bußgeld- und Behördenvorgänge" },
-      { label: "Eigenes Logo und eigener E-Mail-Absender" },
-      { label: "Prioritäts-Support" },
-      { label: "Mehrere Standorte", status: "planned" },
-      { label: "Erweiterte Auswertungen", status: "planned" },
-    ],
-  },
+  { id: "start", name: "Start", pricePerMonth: 120, vehicleLimit: 10, tagline: "Für kleine Vermieter." },
+  { id: "business", name: "Business", pricePerMonth: 200, vehicleLimit: 50, tagline: "Für wachsende Flotten.", recommended: true },
+  { id: "pro", name: "Pro", pricePerMonth: 290, vehicleLimit: 100, tagline: "Für große Flotten." },
 ];
 
-export const visibleFeatures = (plan: Plan) => plan.features.filter((f) => SHOW_PLANNED_FEATURES || f.status !== "planned");
+/** In jedem Tarif enthalten. Nur Funktionen, die es in RentBase tatsächlich gibt. */
+export const INCLUDED_FEATURES: string[] = [
+  "Buchungen und Dispo-Kalender",
+  "Fuhrpark mit Wartung und HU-Fälligkeiten",
+  "Kundenakte mit Import bestehender Daten",
+  "Digitale Mietverträge mit Unterschrift",
+  "Digitale Übergabe und Rückgabe mit Fotos",
+  "Schadenakten mit Fahrzeugskizze",
+  "Rechnungen, Gutschriften und Stornobelege",
+  "Zahlungen, Kaution und Auszahlungen",
+  "Mahnwesen mit Zahlungserinnerung und Mahnstufen",
+  "Bußgeld- und Behördenvorgänge",
+  "Mitarbeiter mit Rollen",
+  "Eigenes Logo und eigener E-Mail-Absender",
+];
 
 export const formatPrice = (euro: number) => `${euro.toLocaleString("de-DE")} €`;

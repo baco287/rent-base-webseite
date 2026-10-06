@@ -46,7 +46,7 @@ export default function AgbPage() {
       <ol>
         <li>Der Anbieter betreibt RentBase mit der gebotenen Sorgfalt und bemüht sich um eine möglichst unterbrechungsfreie Verfügbarkeit. Eine bestimmte Verfügbarkeit ist nur geschuldet, wenn sie ausdrücklich vereinbart wurde.</li>
         <li>Wartungsarbeiten führt der Anbieter nach Möglichkeit außerhalb üblicher Geschäftszeiten durch. Planbare längere Unterbrechungen kündigt er rechtzeitig an.</li>
-        <li>Support erhält der Kunde per E-Mail an <a href={`mailto:${c.email}`}>{c.email}</a>. Umfang und Reaktionszeiten richten sich nach dem gewählten Tarif.</li>
+        <li>Support erhält der Kunde per E-Mail an <a href={`mailto:${c.email}`}>{c.email}</a> oder per WhatsApp. Der Anbieter bearbeitet Anfragen an Werktagen in angemessener Zeit.</li>
       </ol>
 
       <h2>§ 6 Vergütung und Zahlung</h2>
