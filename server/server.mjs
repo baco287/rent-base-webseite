@@ -7,7 +7,7 @@
 //
 // Umgebungsvariablen (in Coolify setzen):
 //   SMTP_HOST, SMTP_PORT (Standard 587, STARTTLS), SMTP_USER, SMTP_PASS   Postfach, über das die Anfragen verschickt werden
-//   MAIL_TO (Standard info@rent-base.de), MAIL_FROM (Standard SMTP_USER)
+//   MAIL_TO (Standard info@rent-base.de), MAIL_FROM (Standard SMTP_USER, wenn das eine Adresse ist, sonst MAIL_TO)
 // Ohne SMTP_HOST antwortet das Formular mit 503 und zeigt E-Mail und WhatsApp als Ausweg. SMTP_HOST=test verschickt nichts.
 
 import http from "node:http";
@@ -20,6 +20,8 @@ import nodemailer from "nodemailer";
 const ROOT = path.resolve(process.env.SITE_ROOT ?? "out");
 const PORT = Number(process.env.PORT ?? 80);
 const MAIL_TO = process.env.MAIL_TO ?? "info@rent-base.de";
+// Absender: MAIL_FROM, sonst SMTP_USER, falls das eine Adresse ist. Bei ALL-INKL ist SMTP_USER oft eine Kennung (m0…).
+const MAIL_FROM = process.env.MAIL_FROM || (process.env.SMTP_USER?.includes("@") ? process.env.SMTP_USER : MAIL_TO);
 const SMTP_HOST = process.env.SMTP_HOST ?? "";
 // Hetzner sperrt ausgehenden Port 465 (und 25), deshalb 587 mit STARTTLS als Standard.
 const SMTP_PORT = Number(process.env.SMTP_PORT ?? 587);
@@ -223,7 +225,7 @@ async function handleInquiry(req, res) {
 
   try {
     await transport.sendMail({
-      from: { name: "RentBase Website", address: process.env.MAIL_FROM ?? process.env.SMTP_USER ?? MAIL_TO },
+      from: { name: "RentBase Website", address: MAIL_FROM },
       to: MAIL_TO,
       replyTo: { name: f.name, address: f.email },
       subject: `Testzugang angefragt: ${f.firma}${f.fahrzeuge ? ` (${f.fahrzeuge} Fahrzeuge)` : ""}`,
