@@ -45,3 +45,27 @@ pdftoppm -r 200 -png -f 1 -l 2 uebergabeprotokoll-beispiel.pdf seite   # danach 
 - `public/brand/rentbase-logo.png`: freigestelltes Originallogo (transparent, 1774 × 887), unverändert.
 - `public/brand/rentbase-wordmark.webp`: verkleinerter Ausschnitt der Wortmarke für Navigation und Footer (`src/components/ui/logo.tsx`).
 - `public/brand/rentbase-og.png`: Vorschaubild für geteilte Links (1200 × 630), Originallogo mittig auf Weiß.
+
+## Auslieferung und Anfrageformular
+
+Der Container (siehe `Dockerfile`) baut den statischen Export und liefert ihn mit `server/server.mjs` aus, einem kleinen
+Node-Server ohne Zugriffsprotokoll. Er nimmt außerdem das Formular „Kostenlos testen“ unter `POST /api/anfrage` an und
+schickt die Anfrage als E-Mail an `info@rent-base.de` (Antwort-an = Absender). Anfragen werden auf dem Server nicht gespeichert.
+
+Umgebungsvariablen in Coolify:
+
+| Variable    | Bedeutung                                              |
+|-------------|--------------------------------------------------------|
+| `SMTP_HOST` | Mailserver des Postfachs (ALL-INKL), z. B. `w0…kasserver.com` |
+| `SMTP_PORT` | `465` (Standard, SSL) oder `587`                         |
+| `SMTP_USER` | Postfach, über das versendet wird                       |
+| `SMTP_PASS` | Passwort dieses Postfachs                               |
+| `MAIL_TO`   | Empfänger, Standard `info@rent-base.de`                 |
+
+Ohne `SMTP_HOST` zeigt das Formular E-Mail und WhatsApp als Ausweg. Lokal testen ohne Versand:
+
+```bash
+npm run build
+cd server && npm install && cd ..
+SITE_ROOT=out PORT=3401 SMTP_HOST=test node server/server.mjs
+```

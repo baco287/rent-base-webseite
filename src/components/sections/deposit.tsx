@@ -73,7 +73,7 @@ function DepositCard() {
 
 export function Deposit() {
   return (
-    <section id="kaution" aria-labelledby="deposit-title" className="scroll-mt-20 border-y border-line bg-surface py-24 lg:py-32">
+    <section id="kaution" aria-labelledby="deposit-title" className="scroll-mt-20 border-y border-line bg-surface py-20 lg:py-28">
       <Container>
         <div className="grid items-start gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
           <div>

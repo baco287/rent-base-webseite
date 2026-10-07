@@ -29,7 +29,7 @@ export default function DatenschutzPage() {
         <li>Diese Website setzt keine Cookies und verwendet keine Analyse- oder Trackingwerkzeuge.</li>
         <li>Es werden keine Inhalte von Drittanbietern geladen. Schriften, Bilder und Skripte liegen auf unserem eigenen Server.</li>
         <li>Die Website wird auf einem Server in Deutschland betrieben. Zugriffsprotokolle mit IP-Adressen werden nicht gespeichert.</li>
-        <li>Personenbezogene Daten verarbeiten wir nur, wenn Sie uns kontaktieren, zum Beispiel per E-Mail oder WhatsApp.</li>
+        <li>Personenbezogene Daten verarbeiten wir nur, wenn Sie uns kontaktieren, zum Beispiel über das Anfrageformular, per E-Mail oder WhatsApp.</li>
       </ul>
 
       <h2>3. Hosting und Bereitstellung der Website</h2>
@@ -47,12 +47,15 @@ export default function DatenschutzPage() {
       <h2>5. Cookies, Analyse und Tracking</h2>
       <p>Wir setzen keine Cookies, keine Webanalyse, keine Werbe- oder Social-Media-Dienste und keine Fingerprinting-Techniken ein. Deshalb gibt es auf dieser Website auch keinen Cookie-Hinweis.</p>
 
-      <h2>6. Kontakt per E-Mail oder Telefon</h2>
+      <h2>6. Anfrageformular, Kontakt per E-Mail oder Telefon</h2>
       <p>
-        Wenn Sie uns per E-Mail oder Telefon kontaktieren oder über den Link „Kostenlos testen“ einen Testzugang anfragen, verarbeiten wir die von Ihnen mitgeteilten Angaben (zum Beispiel Name, Firma, E-Mail-Adresse, Telefonnummer und den Inhalt Ihrer Nachricht), um Ihre Anfrage zu bearbeiten.
+        Wenn Sie uns über das Anfrageformular („Kostenlos testen“), per E-Mail oder Telefon kontaktieren, verarbeiten wir die von Ihnen mitgeteilten Angaben (zum Beispiel Name, Firma, E-Mail-Adresse, Telefonnummer und den Inhalt Ihrer Nachricht), um Ihre Anfrage zu bearbeiten.
       </p>
       <p>
         Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, soweit Ihre Anfrage auf einen Vertragsschluss gerichtet ist, im Übrigen Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse liegt in der Beantwortung Ihrer Anfrage. Wir löschen die Angaben, sobald sie für die Bearbeitung nicht mehr erforderlich sind und keine gesetzlichen Aufbewahrungspflichten (zum Beispiel aus Handels- und Steuerrecht) entgegenstehen.
+      </p>
+      <p>
+        Die Angaben aus dem Anfrageformular (Name, Firma, E-Mail-Adresse und, falls angegeben, Telefonnummer, Anzahl der Fahrzeuge und Nachricht) werden verschlüsselt an unseren Server übertragen und von dort als E-Mail an unser Postfach weitergeleitet. Auf dem Server selbst werden die Anfragen nicht gespeichert. Um massenhafte automatisierte Anfragen zu verhindern, hält der Server eine nicht umkehrbar verschlüsselte Kennung (Hashwert) Ihrer IP-Adresse höchstens eine Stunde im Arbeitsspeicher; sie wird nicht dauerhaft gespeichert. Rechtsgrundlage dafür ist Art. 6 Abs. 1 lit. f DSGVO, unser berechtigtes Interesse ist der Schutz vor Missbrauch des Formulars.
       </p>
       <p>
         Unsere E-Mail-Postfächer werden von der ALL-INKL.COM – Neue Medien Münnich, Inhaber René Münnich, Hauptstraße 68, 02742 Friedersdorf, Deutschland, betrieben. Mit dem Anbieter besteht ein Vertrag zur Auftragsverarbeitung gemäß Art. 28 DSGVO.
@@ -73,7 +76,7 @@ export default function DatenschutzPage() {
       <p>Die Links „Anmelden“ führen zur Anwendung RentBase unter {SITE.appLoginUrl.replace("https://", "").replace("/login", "")}. Dort gelten die Datenschutzhinweise und Vereinbarungen der Anwendung.</p>
 
       <h2>9. Empfänger und Übermittlung in Drittländer</h2>
-      <p>Eine Weitergabe Ihrer Daten an Dritte erfolgt nur an die oben genannten Dienstleister oder wenn wir gesetzlich dazu verpflichtet sind. Beim Besuch der Website und bei Kontakt per E-Mail findet keine Übermittlung in Länder außerhalb der Europäischen Union oder des Europäischen Wirtschaftsraums statt. Bei Kontakt per WhatsApp gelten die Hinweise in Abschnitt 7.</p>
+      <p>Eine Weitergabe Ihrer Daten an Dritte erfolgt nur an die oben genannten Dienstleister oder wenn wir gesetzlich dazu verpflichtet sind. Beim Besuch der Website, bei Nutzung des Anfrageformulars und bei Kontakt per E-Mail findet keine Übermittlung in Länder außerhalb der Europäischen Union oder des Europäischen Wirtschaftsraums statt. Bei Kontakt per WhatsApp gelten die Hinweise in Abschnitt 7.</p>
 
       <h2>10. Ihre Rechte</h2>
       <p>Sie haben nach der DSGVO insbesondere folgende Rechte:</p>

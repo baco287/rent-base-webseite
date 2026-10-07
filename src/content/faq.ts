@@ -51,6 +51,6 @@ export const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Kann ich RentBase kostenlos testen?",
-    a: "Ja. Schreib uns kurz per E-Mail an info@rent-base.de oder per WhatsApp an +49 179 1528109. Wir richten dir einen Testzugang ein und helfen beim Einstieg.",
+    a: "Ja. Fülle das kurze Anfrageformular unten auf der Seite aus oder schreib uns per E-Mail an info@rent-base.de oder per WhatsApp an +49 179 1528109. Wir richten dir einen Testzugang ein und helfen beim Einstieg.",
   },
 ];

@@ -156,9 +156,26 @@
     color: var(--color-ink);
     font-weight: 600;
   }
+  /* feiner goldener Lichtstreif im dunklen Hero, angelehnt an den Schwung im Logo */
+  .hero-streak {
+    transform: rotate(-9deg);
+    background: linear-gradient(90deg, transparent, rgb(201 169 121 / 0.15) 25%, rgb(232 200 140 / 0.55) 55%, rgb(201 169 121 / 0.12) 80%, transparent);
+    box-shadow: 0 0 18px 2px rgb(201 169 121 / 0.18);
+  }
   .gold-rule {
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--color-gold-300) 20%, var(--color-gold-300) 80%, transparent);
+  }
+}
+
+/* Wechsel der Ansicht in der Produkttour */
+.tour-fade {
+  animation: tour-in 380ms var(--ease-out-soft);
+}
+@keyframes tour-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
   }
 }
 

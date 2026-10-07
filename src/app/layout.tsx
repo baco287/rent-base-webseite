@@ -7,6 +7,7 @@ import { SITE } from "@/content/site";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { RevealObserver } from "@/components/ui/reveal";
+import { MobileCta } from "@/components/mobile-cta";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <SiteHeader />
         <main id="inhalt">{children}</main>
         <SiteFooter />
+        <MobileCta />
         <RevealObserver />
       </body>
     </html>

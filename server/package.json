@@ -1,0 +1,8 @@
+{
+  "name": "rent-base-website-server",
+  "private": true,
+  "type": "module",
+  "description": "Auslieferung der statischen Website und Annahme des Anfrageformulars",
+  "scripts": { "start": "node server.mjs" },
+  "dependencies": { "nodemailer": "^7.0.6" }
+}

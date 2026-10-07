@@ -65,7 +65,7 @@ export function AppWindow({ url, active, children, sidebar = true }: { url: stri
 
 export function Tablet({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <div className={`rounded-[1.4em] bg-[#1b1f23] p-[0.75em] shadow-frame ring-1 ring-black/10 ${className}`}>
+    <div className={`rounded-[1.4em] bg-[#1b1f23] p-[0.75em] shadow-frame ring-1 ring-white/12 ${className}`}>
       <div className="overflow-hidden rounded-[0.7em] bg-app-bg">{children}</div>
     </div>
   );
@@ -73,7 +73,7 @@ export function Tablet({ children, className = "" }: { children: ReactNode; clas
 
 export function Phone({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <div className={`rounded-[1.9em] bg-[#1b1f23] p-[0.55em] shadow-frame ring-1 ring-black/10 ${className}`}>
+    <div className={`rounded-[1.9em] bg-[#1b1f23] p-[0.55em] shadow-frame ring-1 ring-white/12 ${className}`}>
       <div className="relative overflow-hidden rounded-[1.45em] bg-app-bg">
         <div className="absolute top-[0.45em] left-1/2 z-10 h-[1.1em] w-[4.2em] -translate-x-1/2 rounded-full bg-[#1b1f23]" />
         {children}

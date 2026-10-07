@@ -1,9 +1,9 @@
 import { SITE } from "@/content/site";
 import { FAQ } from "@/content/faq";
-import { BenefitBar, Hero } from "@/components/sections/hero";
+import { Hero } from "@/components/sections/hero";
 import { CentralRecord, Process } from "@/components/sections/process";
 import { Features, MobileHandover } from "@/components/sections/features";
-import { Audience, Comparison } from "@/components/sections/audience";
+import { Audience } from "@/components/sections/audience";
 import { Protocol } from "@/components/sections/protocol";
 import { Deposit } from "@/components/sections/deposit";
 import { Pricing } from "@/components/sections/pricing";
@@ -34,7 +34,6 @@ export default function HomePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Hero />
-      <BenefitBar />
       <Process />
       <CentralRecord />
       <Features />
@@ -42,7 +41,6 @@ export default function HomePage() {
       <Protocol />
       <Deposit />
       <Audience />
-      <Comparison />
       <Pricing />
       <Faq />
       <FinalCta />

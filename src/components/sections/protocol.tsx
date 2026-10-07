@@ -17,7 +17,7 @@ const POINTS = [
 
 export function Protocol() {
   return (
-    <section id="protokoll" aria-labelledby="protocol-title" className="scroll-mt-20 overflow-hidden bg-white py-24 lg:py-32">
+    <section id="protokoll" aria-labelledby="protocol-title" className="scroll-mt-20 overflow-hidden bg-white py-20 lg:py-28">
       <Container className="grid items-center gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
         <div>
           <SectionHeader

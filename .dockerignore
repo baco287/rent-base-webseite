@@ -5,3 +5,5 @@ out
 *.tsbuildinfo
 .env*
 npm-debug.log
+server/node_modules
+vorschau

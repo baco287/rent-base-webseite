@@ -11,10 +11,6 @@ export const SITE = {
     "RentBase verbindet Buchungen, Fahrzeuge, Kunden, digitale Übergaben, Rückgaben und Abrechnung in einer zentralen Software für Fahrzeugvermieter.",
 } as const;
 
-/**
- * „Kostenlos testen“: Es gibt noch keine Selbstregistrierung. Testzugänge werden persönlich eingerichtet,
- * deshalb führt der Aufruf vorerst zu einer vorbereiteten E-Mail. Später hier auf eine Registrierungsseite umstellen.
- */
 /** WhatsApp-Kontakt für Anfragen und Testzugänge. Nummer im internationalen Format ohne +, Leerzeichen. */
 export const WHATSAPP = {
   number: "491791528109",
@@ -23,12 +19,17 @@ export const WHATSAPP = {
   label: "Per WhatsApp anfragen",
 } as const;
 
+/**
+ * „Kostenlos testen“: Es gibt noch keine Selbstregistrierung. Testzugänge werden persönlich eingerichtet.
+ * Alle Knöpfe führen zum Anfrageformular (#anfrage); mailHref ist der Ausweg, falls der Formularversand nicht klappt.
+ */
 export const TRIAL = {
   label: "Kostenlos testen",
-  href: `mailto:${SITE.contactEmail}?subject=${encodeURIComponent("Testzugang RentBase")}&body=${encodeURIComponent(
+  href: "/#anfrage",
+  mailHref: `mailto:${SITE.contactEmail}?subject=${encodeURIComponent("Testzugang RentBase")}&body=${encodeURIComponent(
     "Guten Tag,\n\nich möchte RentBase kostenlos testen.\n\nFirma:\nAnzahl Fahrzeuge:\nTelefon (optional):\n",
   )}`,
-  note: "Wir richten deinen Testzugang persönlich ein, per E-Mail oder WhatsApp.",
+  note: "Wir richten deinen Testzugang persönlich ein und melden uns per E-Mail oder Telefon.",
 } as const;
 
 export const NAV = [

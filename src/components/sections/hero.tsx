@@ -1,76 +1,59 @@
 import { Check } from "lucide-react";
 import { TRIAL, TRUST_POINTS } from "@/content/site";
 import { WhatsAppLink } from "../ui/whatsapp";
-import { BENEFITS } from "@/content/product";
 import { Button, Container } from "../ui/primitives";
 import { DashboardScreen } from "../mockups/desktop-screens";
 import { PhoneSignature, TabletDamage } from "../mockups/device-screens";
 
+/**
+ * Erster Bildschirm auf dunklem Grund: Schwarz und Gold aus dem Logo, der goldene Lichtstreif als ruhiges Hintergrundmotiv.
+ * Das Logo selbst steht unverändert in der hellen Navigation darüber.
+ */
 export function Hero() {
   return (
-    <section aria-labelledby="hero-title" className="relative overflow-hidden">
-      {/* ruhiger, warmer Hintergrund aus dem Logo; keine Farbverläufe über die ganze Fläche */}
-      <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-[78%] bg-surface" />
-      <Container className="pt-14 pb-16 sm:pt-20 lg:pt-24 lg:pb-24">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="eyebrow">Software für Fahrzeugvermieter</p>
-          <h1 id="hero-title" className="display mt-5 text-[2.9rem] sm:text-[4rem] lg:text-[4.9rem]">
+    <section aria-labelledby="hero-title" className="relative isolate overflow-hidden bg-ink text-white">
+      {/* Hintergrund: warmes Goldlicht oben rechts und ein feiner Lichtstreif, angelehnt an den Schwung im Logo */}
+      <div aria-hidden className="absolute -top-[30%] right-[-10%] -z-10 h-[90%] w-[70%] rounded-full bg-[radial-gradient(closest-side,rgb(201_169_121/0.22),transparent)]" />
+      <div aria-hidden className="absolute bottom-[-20%] left-[-15%] -z-10 h-[60%] w-[50%] rounded-full bg-[radial-gradient(closest-side,rgb(144_108_60/0.16),transparent)]" />
+      <div aria-hidden className="hero-streak absolute top-[58%] left-[-10%] -z-10 h-px w-[120%]" />
+
+      <Container className="grid items-center gap-14 pt-14 pb-20 sm:pt-20 lg:grid-cols-[0.82fr_1.18fr] lg:gap-12 lg:pt-24 lg:pb-28">
+        <div className="text-center lg:text-left">
+          <p className="eyebrow text-gold-300">Software für Fahrzeugvermieter</p>
+          <h1 id="hero-title" className="display mt-5 text-[2.9rem] text-white sm:text-[4rem] lg:text-[3.9rem] xl:text-[4.4rem]">
             Deine Vermietung.
             <br />
-            Ein System.
+            <span className="text-gold-300">Ein System.</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-[17px] leading-relaxed text-ink-2 sm:text-lg">
-            RentBase verbindet Buchungen, Fahrzeuge, Kunden, Übergaben, Rückgaben und Abrechnung in einer zentralen Plattform. Vom ersten Kundenkontakt bis zur fertigen Rechnung.
+          <p className="mx-auto mt-6 max-w-xl text-[17px] leading-relaxed text-white/70 sm:text-lg lg:mx-0">
+            Buchungen, Fahrzeuge, Kunden, Übergaben, Rückgaben und Abrechnung in einer Plattform. Vom ersten Kundenkontakt bis zur fertigen Rechnung.
           </p>
-          <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button href={TRIAL.href} size="lg" arrow className="w-full sm:w-auto">{TRIAL.label}</Button>
-            <Button href="#produkt" variant="secondary" size="lg" className="w-full sm:w-auto">RentBase entdecken</Button>
+          <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
+            <Button href={TRIAL.href} variant="light" size="lg" arrow className="w-full sm:w-auto">{TRIAL.label}</Button>
+            <WhatsAppLink variant="button" className="w-full justify-center border-white/25 text-white hover:border-white/60 hover:bg-white/5 sm:w-auto" />
           </div>
-          <p className="mt-4 text-sm text-ink-3">
-            oder direkt <WhatsAppLink variant="md" className="h-auto! border-0! px-1! text-ink underline decoration-[#25D366]/50 underline-offset-4 hover:decoration-[#25D366]">per WhatsApp anfragen</WhatsAppLink>
-          </p>
-          <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-ink-3">
+          <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/60 lg:justify-start">
             {TRUST_POINTS.map((t) => (
               <li key={t} className="flex items-center gap-2">
-                <Check aria-hidden className="size-4 text-gold-500" strokeWidth={2.25} />
+                <Check aria-hidden className="size-4 text-gold-300" strokeWidth={2.25} />
                 {t}
               </li>
             ))}
           </ul>
         </div>
 
-        {/* Produktdarstellung: Verwaltung am Desktop, Übergabe auf Tablet und Smartphone als ein System */}
-        <div className="relative mx-auto mt-14 max-w-[1080px] sm:mt-16 lg:mt-20" data-reveal>
-          <div className="lg:mx-[6%]">
+        {/* Produkt sofort sichtbar: Verwaltung am Desktop, Übergabe auf Tablet und Smartphone */}
+        <div className="relative lg:-mr-[14%]" data-reveal>
+          <div className="hidden sm:block sm:pr-[6%] lg:pr-0">
             <DashboardScreen />
           </div>
-          <div className="relative mx-auto -mt-[14%] w-[82%] sm:absolute sm:bottom-[-7%] sm:left-0 sm:mt-0 sm:w-[44%] lg:w-[40%]">
+          <div className="relative w-[88%] sm:absolute sm:bottom-[-10%] sm:left-[-4%] sm:w-[48%] lg:left-[-2%]">
             <TabletDamage />
           </div>
-          <div className="absolute right-[1%] bottom-[-9%] hidden w-[17%] sm:block lg:right-[2%] lg:w-[15%]">
+          <div className="absolute right-0 bottom-[-6%] w-[34%] sm:right-[2%] sm:bottom-[-14%] sm:w-[17%] lg:right-[8%]">
             <PhoneSignature />
           </div>
         </div>
-      </Container>
-    </section>
-  );
-}
-
-export function BenefitBar() {
-  return (
-    <section aria-labelledby="benefits-title" className="border-y border-line bg-white">
-      <Container className="py-12 lg:py-14">
-        <h2 id="benefits-title" className="text-center text-[15px] font-medium text-ink-2">
-          Alles, was deine Vermietung braucht. <span className="text-ink">An einem Ort.</span>
-        </h2>
-        <ul className="mt-8 grid grid-cols-2 gap-y-6 sm:grid-cols-3 lg:grid-cols-5 lg:divide-x lg:divide-line">
-          {BENEFITS.map(({ icon: Icon, label }) => (
-            <li key={label} className="flex flex-col items-center gap-3 px-4 text-center">
-              <Icon aria-hidden className="size-5 text-gold-500" strokeWidth={1.6} />
-              <span className="text-sm leading-snug text-ink">{label}</span>
-            </li>
-          ))}
-        </ul>
       </Container>
     </section>
   );

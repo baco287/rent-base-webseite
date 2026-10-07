@@ -7,7 +7,7 @@ import { Container, SectionHeader } from "../ui/primitives";
 /** Akkordeon mit nativem details/summary: tastaturbedienbar, ohne JavaScript, Inhalte für Suchmaschinen sichtbar. */
 export function Faq() {
   return (
-    <section id="faq" aria-labelledby="faq-title" className="scroll-mt-20 bg-white py-24 lg:py-32">
+    <section id="faq" aria-labelledby="faq-title" className="scroll-mt-20 bg-white py-20 lg:py-28">
       <Container className="grid gap-12 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
         <div className="lg:sticky lg:top-28 lg:self-start">
           <SectionHeader id="faq-title" eyebrow="FAQ" title="Häufige Fragen." />

@@ -8,7 +8,7 @@ export function Container({ className = "", children }: { className?: string; ch
 
 type ButtonProps = {
   href: string;
-  variant?: "primary" | "secondary" | "ghost";
+  variant?: "primary" | "secondary" | "ghost" | "light" | "outline-light";
   size?: "md" | "lg";
   arrow?: boolean;
   className?: string;
@@ -21,6 +21,9 @@ const variants = {
   primary: "bg-ink text-white hover:bg-[#262c31] shadow-[0_1px_0_rgb(255_255_255/0.08)_inset]",
   secondary: "border border-line-strong bg-white text-ink hover:border-ink-3 hover:bg-surface",
   ghost: "text-ink-2 hover:text-ink",
+  /* auf dunklem Grund */
+  light: "bg-white text-ink hover:bg-gold-50",
+  "outline-light": "border border-white/25 text-white hover:border-white/60 hover:bg-white/5",
 };
 const sizes = { md: "h-10 px-4 text-sm", lg: "h-12 px-6 text-[15px]" };
 
@@ -47,14 +50,15 @@ export function Button({ href, variant = "primary", size = "md", arrow = false, 
   );
 }
 
-export function SectionHeader({ eyebrow, title, text, align = "left", id }: { eyebrow?: string; title: ReactNode; text?: ReactNode; align?: "left" | "center"; id?: string }) {
+export function SectionHeader({ eyebrow, title, text, align = "left", id, tone = "light" }: { eyebrow?: string; title: ReactNode; text?: ReactNode; align?: "left" | "center"; id?: string; tone?: "light" | "dark" }) {
+  const dark = tone === "dark";
   return (
     <div className={`max-w-2xl ${align === "center" ? "mx-auto text-center" : ""}`} data-reveal>
-      {eyebrow && <p className="eyebrow mb-4">{eyebrow}</p>}
-      <h2 id={id} className="display text-[2.25rem] sm:text-[2.75rem] lg:text-[3.1rem]">
+      {eyebrow && <p className={`eyebrow mb-4 ${dark ? "text-gold-300" : ""}`}>{eyebrow}</p>}
+      <h2 id={id} className={`display text-[2.25rem] sm:text-[2.75rem] lg:text-[3.1rem] ${dark ? "text-white" : ""}`}>
         {title}
       </h2>
-      {text && <p className="mt-5 text-[17px] leading-relaxed text-ink-2">{text}</p>}
+      {text && <p className={`mt-5 text-[17px] leading-relaxed ${dark ? "text-white/70" : "text-ink-2"}`}>{text}</p>}
     </div>
   );
 }
