@@ -57,7 +57,7 @@ Umgebungsvariablen in Coolify:
 | Variable    | Bedeutung                                              |
 |-------------|--------------------------------------------------------|
 | `SMTP_HOST` | Mailserver des Postfachs (ALL-INKL), z. B. `w0…kasserver.com` |
-| `SMTP_PORT` | `465` (Standard, SSL) oder `587`                         |
+| `SMTP_PORT` | `587` (Standard, STARTTLS). 465 ist bei Hetzner gesperrt |
 | `SMTP_USER` | Postfach, über das versendet wird                       |
 | `SMTP_PASS` | Passwort dieses Postfachs                               |
 | `MAIL_TO`   | Empfänger, Standard `info@rent-base.de`                 |

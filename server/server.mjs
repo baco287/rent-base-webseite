@@ -6,7 +6,7 @@
 // Für die Begrenzung von Massenanfragen werden IP-Adressen nur gehasht und höchstens eine Stunde im Arbeitsspeicher gehalten.
 //
 // Umgebungsvariablen (in Coolify setzen):
-//   SMTP_HOST, SMTP_PORT (Standard 465), SMTP_USER, SMTP_PASS   Postfach, über das die Anfragen verschickt werden
+//   SMTP_HOST, SMTP_PORT (Standard 587, STARTTLS), SMTP_USER, SMTP_PASS   Postfach, über das die Anfragen verschickt werden
 //   MAIL_TO (Standard info@rent-base.de), MAIL_FROM (Standard SMTP_USER)
 // Ohne SMTP_HOST antwortet das Formular mit 503 und zeigt E-Mail und WhatsApp als Ausweg. SMTP_HOST=test verschickt nichts.
 
@@ -21,6 +21,8 @@ const ROOT = path.resolve(process.env.SITE_ROOT ?? "out");
 const PORT = Number(process.env.PORT ?? 80);
 const MAIL_TO = process.env.MAIL_TO ?? "info@rent-base.de";
 const SMTP_HOST = process.env.SMTP_HOST ?? "";
+// Hetzner sperrt ausgehenden Port 465 (und 25), deshalb 587 mit STARTTLS als Standard.
+const SMTP_PORT = Number(process.env.SMTP_PORT ?? 587);
 
 const MIME = {
   ".html": "text/html; charset=utf-8",
@@ -147,9 +149,14 @@ const transport = !SMTP_HOST
     ? nodemailer.createTransport({ jsonTransport: true })
     : nodemailer.createTransport({
         host: SMTP_HOST,
-        port: Number(process.env.SMTP_PORT ?? 465),
-        secure: Number(process.env.SMTP_PORT ?? 465) === 465,
+        port: SMTP_PORT,
+        secure: SMTP_PORT === 465,
+        requireTLS: SMTP_PORT !== 465, // 587: STARTTLS ist Pflicht, kein Klartext-Login
         auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
+        // kurze Grenzen: Besucher sollen nicht minutenlang warten, sondern schnell den Ausweg sehen
+        connectionTimeout: 10_000,
+        greetingTimeout: 10_000,
+        socketTimeout: 20_000,
       });
 
 const clean = (v, max) => String(v ?? "").replace(/[\u0000-\u0009\u000B-\u001F\u007F]/g, "").trim().slice(0, max);
