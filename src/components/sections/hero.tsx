@@ -1,60 +1,63 @@
-import { Check } from "lucide-react";
-import { TRIAL, TRUST_POINTS } from "@/content/site";
-import { WhatsAppLink } from "../ui/whatsapp";
+import { PRODUCT_LINK, TRIAL } from "@/content/site";
 import { Button, Container } from "../ui/primitives";
+import { Parallax } from "../ui/parallax";
 import { DashboardScreen } from "../mockups/desktop-screens";
-import { PhoneSignature, TabletDamage } from "../mockups/device-screens";
+import { TabletDamage } from "../mockups/device-screens";
 
 /**
- * Erster Bildschirm auf dunklem Grund: Schwarz und Gold aus dem Logo, der goldene Lichtstreif als ruhiges Hintergrundmotiv.
- * Das Logo selbst steht unverändert in der hellen Navigation darüber.
+ * Einstieg: fast schwarz, große Typografie, darunter die echte RentBase-Oberfläche, die über den Rand des dunklen
+ * Bereichs in die helle Seite hineinragt. Kein Logo-Monogramm hier, das Produkt ist der Star.
  */
 export function Hero() {
   return (
-    <section aria-labelledby="hero-title" className="relative isolate overflow-hidden bg-ink text-white">
-      {/* Hintergrund: warmes Goldlicht oben rechts und ein feiner Lichtstreif, angelehnt an den Schwung im Logo */}
-      <div aria-hidden className="absolute -top-[30%] right-[-10%] -z-10 h-[90%] w-[70%] rounded-full bg-[radial-gradient(closest-side,rgb(201_169_121/0.22),transparent)]" />
-      <div aria-hidden className="absolute bottom-[-20%] left-[-15%] -z-10 h-[60%] w-[50%] rounded-full bg-[radial-gradient(closest-side,rgb(144_108_60/0.16),transparent)]" />
-      <div aria-hidden className="hero-streak absolute top-[58%] left-[-10%] -z-10 h-px w-[120%]" />
+    <section
+      aria-labelledby="hero-title"
+      className="on-dark relative isolate overflow-hidden bg-[linear-gradient(to_bottom,var(--color-night)_0,var(--color-night)_calc(100%-15vw),var(--color-warm-2)_calc(100%-15vw))] max-sm:bg-[linear-gradient(to_bottom,var(--color-night)_0,var(--color-night)_calc(100%-26vw),var(--color-warm-2)_calc(100%-26vw))]"
+    >
+      <div aria-hidden className="engineering-grid absolute inset-x-0 top-0 -z-10 h-[78%]" />
+      <div aria-hidden className="absolute top-[30%] left-1/2 -z-10 h-[60%] w-[90%] -translate-x-1/2 rounded-[50%] bg-[radial-gradient(closest-side,rgb(212_178_122/0.10),transparent)]" />
 
-      <Container className="grid items-center gap-14 pt-14 pb-20 sm:pt-20 lg:grid-cols-[0.82fr_1.18fr] lg:gap-12 lg:pt-24 lg:pb-28">
-        <div className="text-center lg:text-left">
-          <p className="eyebrow text-gold-300">Software für Fahrzeugvermieter</p>
-          <h1 id="hero-title" className="display mt-5 text-[2.9rem] text-white sm:text-[4rem] lg:text-[3.9rem] xl:text-[4.4rem]">
-            Deine Vermietung.
-            <br />
-            <span className="text-gold-300">Ein System.</span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-xl text-[17px] leading-relaxed text-white/70 sm:text-lg lg:mx-0">
-            Buchungen, Fahrzeuge, Kunden, Übergaben, Rückgaben und Abrechnung in einer Plattform. Vom ersten Kundenkontakt bis zur fertigen Rechnung.
-          </p>
-          <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
-            <Button href={TRIAL.href} variant="light" size="lg" arrow className="w-full sm:w-auto">{TRIAL.label}</Button>
-            <WhatsAppLink variant="button" className="w-full justify-center border-white/25 text-white hover:border-white/60 hover:bg-white/5 sm:w-auto" />
+      <Container wide className="pt-10 sm:pt-20 lg:pt-20">
+        <p className="label flex items-center gap-3" data-reveal>
+          <span aria-hidden className="h-px w-8 bg-gold-300/70" />
+          Software für Fahrzeugvermieter
+        </p>
+
+        <h1 id="hero-title" className="display mt-6 sm:mt-8 text-[clamp(2.05rem,9.3vw,6.6rem)] lg:mt-8" data-reveal>
+          Fahrzeugvermietung.
+          <br />
+          <span className="text-white/42">Neu organisiert.</span>
+        </h1>
+        <div className="mt-7 grid gap-7 sm:mt-10 sm:gap-8 lg:mt-10 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-16" data-reveal>
+          <p className="lead max-w-xl">RentBase verbindet Buchungen, Fahrzeuge, Kunden, Verträge, Übergaben, Rückgaben und Abrechnung in einem System.</p>
+          <div>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Button href={TRIAL.href} variant="light" size="lg" arrow className="w-full sm:w-auto">{TRIAL.label}</Button>
+              <Button href={PRODUCT_LINK.href} variant="outline-light" size="lg" className="w-full sm:w-auto">{PRODUCT_LINK.label}</Button>
+            </div>
+            <p className="mt-5 hidden font-mono text-[0.7rem] tracking-[0.12em] text-white/45 uppercase sm:block lg:text-right">Für professionelle Fahrzeugvermieter.</p>
           </div>
-          <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/60 lg:justify-start">
-            {TRUST_POINTS.map((t) => (
-              <li key={t} className="flex items-center gap-2">
-                <Check aria-hidden className="size-4 text-gold-300" strokeWidth={2.25} />
-                {t}
-              </li>
-            ))}
-          </ul>
         </div>
 
-        {/* Produkt sofort sichtbar: Verwaltung am Desktop, Übergabe auf Tablet und Smartphone */}
-        <div className="relative lg:-mr-[14%]" data-reveal>
-          <div className="hidden sm:block sm:pr-[6%] lg:pr-0">
-            <DashboardScreen />
-          </div>
-          <div className="relative w-[88%] sm:absolute sm:bottom-[-10%] sm:left-[-4%] sm:w-[48%] lg:left-[-2%]">
-            <TabletDamage />
-          </div>
-          <div className="absolute right-0 bottom-[-6%] w-[34%] sm:right-[2%] sm:bottom-[-14%] sm:w-[17%] lg:right-[8%]">
-            <PhoneSignature />
+        {/* Produktbühne: Desktop dominant, Tablet mit der Übergabe davor. Mobil: vergrößerter Ausschnitt des Dashboards. */}
+        <div className="relative mt-10 sm:mt-16 lg:mt-16" data-reveal>
+          <Parallax amount={28}>
+            <div className="overflow-hidden rounded-[10px] shadow-product max-sm:-mr-5">
+              <div className="max-sm:w-[175%]">
+                <DashboardScreen />
+              </div>
+            </div>
+          </Parallax>
+          <div className="absolute bottom-[-7%] left-[2%] hidden w-[34%] sm:block lg:w-[29%]">
+            <Parallax amount={64}>
+              <div className="rounded-[1.6em] shadow-product">
+                <TabletDamage />
+              </div>
+            </Parallax>
           </div>
         </div>
       </Container>
+      <div className="h-16 sm:h-24 lg:h-32" />
     </section>
   );
 }

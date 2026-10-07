@@ -7,8 +7,8 @@ export function LegalPage({ title, intro, children }: { title: string; intro?: R
   return (
     <Container className="py-20 lg:py-28">
       <article className="max-w-3xl">
-        <p className="eyebrow">Rechtliches</p>
-        <h1 className="display mt-4 text-[2.6rem] sm:text-[3.2rem]">{title}</h1>
+        <p className="label">Rechtliches</p>
+        <h1 className="display mt-5 text-[2.6rem] sm:text-[3.6rem]">{title}</h1>
         {intro && <div className="mt-6 text-[17px] leading-relaxed text-ink-2">{intro}</div>}
         <div className="legal-prose mt-12">{children}</div>
         <p className="mt-16 border-t border-line pt-6 text-sm text-ink-3">Stand: {LEGAL_UPDATED}</p>

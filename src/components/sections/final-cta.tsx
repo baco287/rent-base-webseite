@@ -1,34 +1,34 @@
 import { Mail } from "lucide-react";
-import { SITE, TRIAL, WHATSAPP } from "@/content/site";
-import { Container } from "../ui/primitives";
+import { PRODUCT_LINK, SITE, TRIAL, WHATSAPP } from "@/content/site";
+import { Button, Container } from "../ui/primitives";
 import { WhatsAppIcon } from "../ui/whatsapp";
 import { InquiryForm } from "../inquiry-form";
 
-const STEPS = ["Kurz Firma und Kontakt angeben", "Wir melden uns persönlich bei dir", "Du testest RentBase mit deinen eigenen Fahrzeugen"];
-
-/** Abschluss und Ziel aller „Kostenlos testen“-Knöpfe: Anfrageformular auf dunklem Grund. */
+/**
+ * Abschluss auf fast schwarzem Grund und Ziel aller „RentBase testen“-Knöpfe. Einzige Stelle, an der das große
+ * RB-Monogramm auftaucht: als ruhige Form im Hintergrund, Ton in Ton.
+ */
 export function FinalCta() {
   return (
-    <section id="anfrage" aria-labelledby="cta-title" className="relative isolate scroll-mt-16 overflow-hidden bg-ink text-white">
-      <div aria-hidden className="absolute -top-[20%] -left-[10%] -z-10 h-[80%] w-[60%] rounded-full bg-[radial-gradient(closest-side,rgb(201_169_121/0.18),transparent)]" />
-      <Container className="grid items-center gap-12 py-20 lg:grid-cols-[1fr_1.05fr] lg:gap-16 lg:py-28">
+    <section id="anfrage" aria-labelledby="cta-title" className="on-dark relative isolate scroll-mt-16 overflow-hidden bg-night">
+      <div aria-hidden className="monogram-ghost absolute top-1/2 right-[-12%] -z-10 aspect-[850/467] w-[95%] -translate-y-1/2 lg:right-[-8%] lg:w-[70%]" />
+      <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-gold-400/60 to-transparent" />
+      <Container wide className="grid gap-14 py-24 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-20 lg:py-36">
         <div data-reveal>
-          <p className="eyebrow text-gold-300">Kostenlos testen</p>
-          <h2 id="cta-title" className="mt-5 max-w-xl font-serif text-[2.5rem] leading-[1.05] font-semibold sm:text-[3.4rem]">
-            Bereit für eine einfachere Vermietung?
+          <p className="label flex items-center gap-3">
+            <span aria-hidden className="h-px w-8 bg-gold-300/70" />
+            {TRIAL.label}
+          </p>
+          <h2 id="cta-title" className="display mt-6 text-[2.8rem] sm:text-[4.2rem] lg:text-[5rem]">
+            Bereit, deine Vermietung neu zu organisieren?
           </h2>
-          <p className="mt-6 max-w-lg text-[17px] leading-relaxed text-white/70">{TRIAL.note}</p>
-          <ol className="mt-8 space-y-3">
-            {STEPS.map((s, i) => (
-              <li key={s} className="flex items-center gap-3 text-[15px] text-white/85">
-                <span className="flex size-7 shrink-0 items-center justify-center rounded-full border border-gold-300/60 text-xs font-semibold text-gold-300 tabular-nums">{i + 1}</span>
-                {s}
-              </li>
-            ))}
-          </ol>
-          <div className="mt-10 border-t border-white/10 pt-6">
-            <p className="text-sm text-white/55">Lieber direkt?</p>
-            <ul className="mt-3 flex flex-col gap-2 text-[15px] sm:flex-row sm:gap-6">
+          <p className="lead mt-7 max-w-md">{TRIAL.note}</p>
+          <div className="mt-8">
+            <Button href={PRODUCT_LINK.href} variant="outline-light" size="lg">{PRODUCT_LINK.label}</Button>
+          </div>
+          <div className="mt-12 border-t border-night-line pt-6">
+            <p className="font-mono text-[0.7rem] tracking-[0.12em] text-white/45 uppercase">Lieber direkt</p>
+            <ul className="mt-3 flex flex-col gap-2 text-[15px] sm:flex-row sm:gap-8">
               <li>
                 <a href={TRIAL.mailHref} className="inline-flex items-center gap-2 text-white underline decoration-white/25 underline-offset-4 hover:decoration-gold-300">
                   <Mail aria-hidden className="size-4 text-gold-300" strokeWidth={1.8} />

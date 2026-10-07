@@ -66,19 +66,19 @@ export function InquiryForm() {
     return (
       <div ref={okRef} tabIndex={-1} role="status" className="rounded-lg bg-white p-8 text-center text-ink outline-none sm:p-10">
         <CheckCircle2 aria-hidden className="mx-auto size-10 text-success" strokeWidth={1.6} />
-        <h3 className="display mt-4 text-[2rem]">Danke für deine Anfrage.</h3>
+        <h3 className="display mt-4 text-[2rem] text-ink">Danke für deine Anfrage.</h3>
         <p className="mx-auto mt-3 max-w-sm text-[15px] leading-relaxed text-ink-2">
           Wir melden uns persönlich bei dir und richten deinen Testzugang ein. Eilig? Schreib uns direkt per WhatsApp.
         </p>
         <div className="mt-6 flex justify-center">
-          <WhatsAppLink variant="md" className="border-line-strong text-ink hover:bg-surface" />
+          <WhatsAppLink variant="md" className="border-line-strong text-ink hover:bg-warm" />
         </div>
       </div>
     );
   }
 
   return (
-    <form onSubmit={onSubmit} className="rounded-lg bg-white p-6 text-ink shadow-[0_30px_80px_-30px_rgb(0_0_0/0.6)] sm:p-8" aria-describedby="anfrage-hinweis">
+    <form onSubmit={onSubmit} className="rounded-[8px] bg-white p-6 text-ink shadow-product sm:p-9" aria-describedby="anfrage-hinweis">
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="f-name" className={label}>Name</label>

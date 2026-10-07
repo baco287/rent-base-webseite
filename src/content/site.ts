@@ -24,7 +24,7 @@ export const WHATSAPP = {
  * Alle Knöpfe führen zum Anfrageformular (#anfrage); mailHref ist der Ausweg, falls der Formularversand nicht klappt.
  */
 export const TRIAL = {
-  label: "Kostenlos testen",
+  label: "RentBase testen",
   href: "/#anfrage",
   mailHref: `mailto:${SITE.contactEmail}?subject=${encodeURIComponent("Testzugang RentBase")}&body=${encodeURIComponent(
     "Guten Tag,\n\nich möchte RentBase kostenlos testen.\n\nFirma:\nAnzahl Fahrzeuge:\nTelefon (optional):\n",
@@ -33,12 +33,15 @@ export const TRIAL = {
 } as const;
 
 export const NAV = [
-  { href: "#produkt", label: "Produkt" },
-  { href: "#funktionen", label: "Funktionen" },
-  { href: "#loesungen", label: "Lösungen" },
-  { href: "#preise", label: "Preise" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/#produkt", label: "Produkt" },
+  { href: "/#ablauf", label: "Ablauf" },
+  { href: "/#uebergabe", label: "Übergabe" },
+  { href: "/#funktionen", label: "Funktionen" },
+  { href: "/#preise", label: "Preise" },
 ] as const;
+
+/** Zweiter Einstieg neben „RentBase testen“: springt zur ersten Produkt-Story. */
+export const PRODUCT_LINK = { href: "/#produkt", label: "Produkt ansehen" } as const;
 
 /** Nur Aussagen, die technisch belegt sind: Web-App ohne Installation, Server bei Hetzner in Deutschland. */
 export const TRUST_POINTS = ["Keine Installation", "Desktop, Tablet und Smartphone", "Hosting in Deutschland"] as const;

@@ -1,33 +1,44 @@
 @import "tailwindcss";
 
 /*
- * RentBase Designsystem. Grundlage ist das Logo:
- *   Wortmarke/Monogramm Schwarz  ≈ #101818  → ink
- *   Gold (Mittelton gemessen)    ≈ #906C3C  → gold-500, dunkler #7E5A2A → gold-600 (Text auf Weiß, 5,9:1)
- *   warmer Logo-Hintergrund      ≈ #F5F3F1  → surface
- * Markenfarbe wird sparsam eingesetzt: Linien, Kennzeichnungen, empfohlener Tarif. Schaltflächen sind schwarz.
+ * RentBase Designsystem V2 – Premium Automotive × German Engineering × moderne B2B-Software.
+ *
+ *   Nacht   #0B0C0D / #101112   Einstieg, Übergabe, Control Center, Abschluss
+ *   Warm    #F7F5F1 / #FAF9F6   helle Produktflächen
+ *   Tinte   #111315             Text auf hell
+ *   Gold    aus dem Logo (Mittelton ≈ #906C3C, Licht ≈ #D4B27A) – nur Linien, Labels, aktive Zustände, einzelne Zahlen
+ *
+ * Typografie: eine moderne Grotesk (Inter Variable, lokal) für alles, sehr groß und eng gesetzt in Headlines.
+ * Technische Kennzeichnungen (Abschnittsnummern, Belegnummern, Spezifikationen) in Monospace.
+ * Die klassische Serifen-Anmutung bleibt allein der Wortmarke vorbehalten.
  */
 @theme {
-  --color-ink: #14181b;
-  --color-ink-2: #3a4046;
-  --color-ink-3: #5e646b;
-  --color-canvas: #ffffff;
-  --color-surface: #f7f5f2;
-  --color-surface-2: #efebe5;
-  --color-line: #e4dfd8;
-  --color-line-strong: #cfc8be;
+  --color-night: #0b0c0d;
+  --color-night-2: #101112;
+  --color-night-3: #17191b;
+  --color-night-line: rgb(255 255 255 / 0.09);
 
+  --color-warm: #f7f5f1;
+  --color-warm-2: #faf9f6;
+  --color-canvas: #ffffff;
+
+  --color-ink: #111315;
+  --color-ink-2: #3b4045;
+  --color-ink-3: #62676d;
+  --color-line: #e5e1da;
+  --color-line-strong: #cdc7bd;
+
+  /* Gold aus dem Logo */
   --color-gold-50: #faf6ef;
   --color-gold-100: #f2e9da;
-  --color-gold-300: #c9a979;
+  --color-gold-300: #d4b27a;
+  --color-gold-400: #b8945b;
   --color-gold-500: #906c3c;
   --color-gold-600: #7e5a2a;
   --color-gold-700: #664820;
 
   --color-success: #2c7a4b;
   --color-success-soft: #e2f1e7;
-  --color-warning: #a65b0a;
-  --color-warning-soft: #fbecd6;
   --color-error: #b23a32;
   --color-error-soft: #f7e0dd;
 
@@ -37,21 +48,23 @@
   --color-app-panel-2: #ebeff4;
   --color-app-line: #d6dce5;
   --color-app-ink: #1a2230;
-  --color-app-ink-3: #7b8794;
+  --color-app-ink-3: #6b7785;
   --color-app-brand: #1c3d6b;
   --color-app-brand-soft: #e3eaf5;
 
   --font-sans: "Inter Variable", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-serif: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", "Segoe UI Mono", Menlo, Consolas, monospace;
 
   --radius-sm: 4px;
   --radius-md: 6px;
   --radius-lg: 10px;
 
-  --shadow-frame: 0 1px 2px rgb(20 24 27 / 0.04), 0 12px 32px -12px rgb(20 24 27 / 0.18);
-  --shadow-lift: 0 1px 2px rgb(20 24 27 / 0.05), 0 6px 18px -8px rgb(20 24 27 / 0.16);
+  --shadow-frame: 0 1px 2px rgb(17 19 21 / 0.05), 0 18px 48px -18px rgb(17 19 21 / 0.28);
+  --shadow-lift: 0 1px 2px rgb(17 19 21 / 0.05), 0 8px 24px -10px rgb(17 19 21 / 0.18);
+  --shadow-product: 0 2px 4px rgb(0 0 0 / 0.2), 0 40px 120px -30px rgb(0 0 0 / 0.75);
 
   --ease-out-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @layer base {
@@ -61,10 +74,10 @@
     -webkit-text-size-adjust: 100%;
   }
   body {
-    background: var(--color-canvas);
+    background: var(--color-warm-2);
     color: var(--color-ink);
     font-family: var(--font-sans);
-    font-feature-settings: "cv11", "ss01";
+    font-feature-settings: "cv11", "ss01", "ss03";
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -73,7 +86,7 @@
     color: var(--color-ink);
   }
   :focus-visible {
-    outline: 2px solid var(--color-gold-500);
+    outline: 2px solid var(--color-gold-400);
     outline-offset: 3px;
     border-radius: 2px;
   }
@@ -91,21 +104,48 @@
 }
 
 @layer components {
-  /* Kleine Überzeile im Stil von „RENTAL SOLUTIONS“ aus dem Logo */
-  .eyebrow {
-    font-size: 0.75rem;
+  /* Technische Kennzeichnung: „01 — Der Mietvorgang“ */
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
     line-height: 1rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
+    font-weight: 500;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--color-gold-600);
   }
+  .on-dark .label,
+  .label-dark {
+    color: var(--color-gold-300);
+  }
+  /* Große, eng gesetzte Headline */
   .display {
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
     font-weight: 600;
-    letter-spacing: -0.01em;
-    line-height: 1.05;
+    letter-spacing: -0.04em;
+    line-height: 0.98;
     color: var(--color-ink);
+    text-wrap: balance;
+  }
+  .on-dark .display {
+    color: #fff;
+  }
+  .lead {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--color-ink-2);
+    text-wrap: pretty;
+  }
+  .on-dark .lead {
+    color: rgb(255 255 255 / 0.66);
+  }
+  .hairline {
+    height: 1px;
+    background: var(--color-line);
+  }
+  .gold-rule {
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-gold-400), rgb(212 178 122 / 0));
   }
   /* Fließtext der Rechtsseiten */
   .legal-prose {
@@ -156,36 +196,42 @@
     color: var(--color-ink);
     font-weight: 600;
   }
-  /* feiner goldener Lichtstreif im dunklen Hero, angelehnt an den Schwung im Logo */
-  .hero-streak {
-    transform: rotate(-9deg);
-    background: linear-gradient(90deg, transparent, rgb(201 169 121 / 0.15) 25%, rgb(232 200 140 / 0.55) 55%, rgb(201 169 121 / 0.12) 80%, transparent);
-    box-shadow: 0 0 18px 2px rgb(201 169 121 / 0.18);
-  }
-  .gold-rule {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--color-gold-300) 20%, var(--color-gold-300) 80%, transparent);
-  }
 }
 
-/* Wechsel der Ansicht in der Produkttour */
-.tour-fade {
-  animation: tour-in 380ms var(--ease-out-soft);
+/* Feines technisches Raster im dunklen Einstieg (statisch, keine Bewegung) */
+.engineering-grid {
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 30%, transparent 75%);
 }
-@keyframes tour-in {
+
+/* Großes RB-Monogramm als ruhiger Hintergrund im Abschluss: Form des Originallogos, Ton in Ton */
+.monogram-ghost {
+  background: linear-gradient(160deg, rgb(212 178 122 / 0.16), rgb(212 178 122 / 0.03) 70%);
+  mask: url("/brand/rentbase-monogram.webp") center / contain no-repeat;
+  -webkit-mask: url("/brand/rentbase-monogram.webp") center / contain no-repeat;
+}
+
+/* Wechsel der Ansicht in Produkt-Stories */
+.view-in {
+  animation: view-in 520ms var(--ease-out-expo);
+}
+@keyframes view-in {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(14px) scale(0.985);
   }
 }
 
-/* Dezentes Einblenden beim Scrollen (Reveal-Komponente). Ohne JavaScript bleibt alles sichtbar. */
+/* Dezentes Einblenden beim Scrollen (RevealObserver). Ohne JavaScript bleibt alles sichtbar. */
 .reveal-ready [data-reveal] {
   opacity: 0;
-  transform: translateY(12px);
+  transform: translateY(18px);
   transition:
-    opacity 600ms var(--ease-out-soft),
-    transform 600ms var(--ease-out-soft);
+    opacity 800ms var(--ease-out-expo),
+    transform 800ms var(--ease-out-expo);
 }
 .reveal-ready [data-reveal].is-visible {
   opacity: 1;

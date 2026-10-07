@@ -1,11 +1,14 @@
 import { SITE } from "@/content/site";
 import { FAQ } from "@/content/faq";
 import { Hero } from "@/components/sections/hero";
-import { CentralRecord, Process } from "@/components/sections/process";
-import { Features, MobileHandover } from "@/components/sections/features";
-import { Audience } from "@/components/sections/audience";
+import { Record } from "@/components/sections/record";
+import { Workflow } from "@/components/sections/workflow";
+import { Handover } from "@/components/sections/handover";
 import { Protocol } from "@/components/sections/protocol";
-import { Deposit } from "@/components/sections/deposit";
+import { Connected } from "@/components/sections/connected";
+import { Control } from "@/components/sections/control";
+import { Capabilities } from "@/components/sections/capabilities";
+import { OneSystem } from "@/components/sections/one-system";
 import { Pricing } from "@/components/sections/pricing";
 import { Faq } from "@/components/sections/faq";
 import { FinalCta } from "@/components/sections/final-cta";
@@ -34,13 +37,14 @@ export default function HomePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Hero />
-      <Process />
-      <CentralRecord />
-      <Features />
-      <MobileHandover />
+      <Record />
+      <Workflow />
+      <Handover />
       <Protocol />
-      <Deposit />
-      <Audience />
+      <Connected />
+      <Control />
+      <Capabilities />
+      <OneSystem />
       <Pricing />
       <Faq />
       <FinalCta />
