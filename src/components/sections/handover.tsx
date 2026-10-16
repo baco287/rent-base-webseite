@@ -1,64 +1,42 @@
-import { HANDOVER_STEPS, PhoneSignature, TabletDamage } from "../mockups/device-screens";
-import { Container, SectionHead } from "../ui/primitives";
-import { Parallax } from "../ui/parallax";
+import Image from "next/image";
+import { ArrowRight } from "lucide-react";
+import uebergabeFoto from "../../../public/bilder/uebergabe-smartphone.webp";
 
-// Was am Fahrzeug erfasst wird (im Übergabe-Assistenten der App vorhanden, Stand 07.10.2026).
-const CAPTURE: [string, string][] = [
-  ["Kilometerstand", "mit letztem Stand aus der Fahrzeugakte"],
-  ["Tankstand", "in Achteln, bei E-Fahrzeugen in Prozent"],
-  ["Schäden", "auf der Fahrzeugskizze, mit Fotos"],
-  ["Fotos", "Pflichtfotos rundum, Tacho und Tank"],
-  ["Checkliste", "Zubehör und Fahrzeugzustand"],
-  ["Fahrer & Dokumente", "Identität und Führerschein geprüft"],
-  ["Unterschrift", "Mieter, auf Wunsch auch Vermieter"],
-];
+// Foto: KI-Bild (Hand, Smartphone, Transporter, siehe assets-ki/LIZENZ.md). Auf dem Display ist die echte RentBase-
+// Übergabe eingesetzt, Schritt 8 von 8 „Abschluss“ (scripts/foto-montage.py, Beispieldaten).
 
-/** Mobile Übergabe: großes Tablet als Bühne, daneben ein Datenblatt dessen, was erfasst wird. */
+/** Collage-Fläche nach dem Referenzbild: helles Feld, Text oben links, das Foto mit dem Smartphone füllt die Fläche. */
 export function Handover() {
   return (
-    <section id="uebergabe" aria-labelledby="handover-title" className="on-dark relative isolate scroll-mt-16 overflow-hidden bg-night py-24 lg:py-36">
-      <div aria-hidden className="absolute top-1/2 right-[-10%] -z-10 h-[80%] w-[70%] -translate-y-1/2 rounded-[50%] bg-[radial-gradient(closest-side,rgb(212_178_122/0.09),transparent)]" />
-      <Container wide>
-        <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-end">
-          <SectionHead id="handover-title" no="03" label="Übergabe & Rückgabe" size="xl" title="Direkt am Fahrzeug." />
-          <p className="lead max-w-md lg:justify-self-end lg:pb-3" data-reveal>
-            Übergabe und Rückgabe erledigst du dort, wo sie stattfinden. Auf dem Tablet oder Smartphone, Schritt für Schritt.
+    <section id="uebergabe" aria-labelledby="handover-title" className="@container relative isolate flex scroll-mt-20 flex-col overflow-hidden bg-[#efebe4] 2xl:col-span-12 2xl:min-h-[calc(100svh-2rem)]">
+      <div className="flex flex-1 flex-col @3xl:flex-row">
+        <div className="relative z-10 px-7 pt-9 sm:px-10 sm:pt-11 @3xl:w-[46%] @3xl:self-center @3xl:py-14 2xl:pl-[max(4rem,calc(50vw-840px+4rem))]">
+          <p className="label" data-reveal>Digitale Übergabe</p>
+          <h2 id="handover-title" className="display mt-4 text-[clamp(2rem,4.6cqw,3.9rem)]" data-reveal>
+            Direkt
+            <br />
+            am Fahrzeug.
+          </h2>
+          <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-ink-2 @3xl:max-w-md @3xl:text-[17px]" data-reveal>
+            Übergabe und Rückgabe erledigst du dort, wo sie stattfinden – mit Smartphone oder Tablet.
           </p>
+          <a href="#protokoll" className="btn-gold group mt-6 inline-flex h-11 cursor-pointer items-center gap-2 rounded-[5px] px-4 text-[14px] font-semibold" data-reveal>
+            Mehr zur Übergabe
+            <ArrowRight aria-hidden className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
         </div>
-
-        <div className="mt-16 grid gap-14 lg:mt-24 lg:grid-cols-[1.55fr_0.75fr] lg:items-center lg:gap-16">
-          <div className="relative pb-[8%] sm:pr-[10%]" data-reveal>
-            <Parallax amount={24}>
-              <div className="rounded-[1.6em] shadow-product">
-                <TabletDamage />
-              </div>
-            </Parallax>
-            <div className="absolute right-0 bottom-0 w-[30%] max-sm:w-[38%] max-sm:right-[-2%]">
-              <Parallax amount={56}>
-                <div className="rounded-[2em] shadow-product">
-                  <PhoneSignature />
-                </div>
-              </Parallax>
-            </div>
-          </div>
-
-          <div data-reveal>
-            <p className="label">Erfasst in {HANDOVER_STEPS.length} Schritten</p>
-            <dl className="mt-6 border-t border-night-line">
-              {CAPTURE.map(([k, v], i) => (
-                <div key={k} className="grid grid-cols-[2.2rem_1fr] border-b border-night-line py-3.5">
-                  <dt className="contents">
-                    <span className="font-mono text-[0.75rem] text-gold-300/80">{String(i + 1).padStart(2, "0")}</span>
-                    <span className="text-[15px] font-semibold tracking-[-0.01em] text-white">{k}</span>
-                  </dt>
-                  <dd className="col-start-2 text-sm text-white/55">{v}</dd>
-                </div>
-              ))}
-            </dl>
-            <p className="mt-6 text-sm leading-relaxed text-white/55">Bei der Rückgabe vergleicht RentBase mit der Übergabe und schlägt Mehrkilometer und Betankung vor.</p>
-          </div>
+        {/* Foto: schmal unter dem Text und bis zum unteren Rand, breit als rechte Hälfte */}
+        <div className="relative mt-6 min-h-[340px] flex-1 @3xl:mt-0 @3xl:min-h-[420px]">
+          <Image
+            src={uebergabeFoto}
+            alt="Smartphone in der Hand vor einem Transporter, auf dem Display die RentBase-Übergabe im Schritt Abschluss mit Kilometerstand, Tankstand, Schäden, Fotos, Checkliste, Zubehör und Unterschrift (Beispieldaten)"
+            fill
+            sizes="(min-width: 1536px) 34vw, (min-width: 768px) 50vw, 100vw"
+            className="object-cover object-[64%_42%] @3xl:object-[60%_45%]"
+          />
+          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,#efebe4_0%,rgb(239_235_228/0)_20%)] @3xl:bg-[linear-gradient(90deg,#efebe4_0%,rgb(239_235_228/0)_25%)]" />
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

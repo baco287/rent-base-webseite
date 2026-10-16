@@ -15,12 +15,9 @@ export function FinalCta() {
       <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-gold-400/60 to-transparent" />
       <Container wide className="grid gap-14 py-24 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-20 lg:py-36">
         <div data-reveal>
-          <p className="label flex items-center gap-3">
-            <span aria-hidden className="h-px w-8 bg-gold-300/70" />
-            {TRIAL.label}
-          </p>
-          <h2 id="cta-title" className="display mt-6 text-[2.8rem] sm:text-[4.2rem] lg:text-[5rem]">
-            Bereit, deine Vermietung neu zu organisieren?
+          <p className="label label-dark">{TRIAL.label}</p>
+          <h2 id="cta-title" className="display mt-5 text-[clamp(2.4rem,5vw,4.2rem)]">
+            Bereit für eine <span className="text-gold-gradient">einfachere</span> Vermietung?
           </h2>
           <p className="lead mt-7 max-w-md">{TRIAL.note}</p>
           <div className="mt-8">

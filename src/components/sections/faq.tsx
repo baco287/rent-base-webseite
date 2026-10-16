@@ -10,7 +10,7 @@ export function Faq() {
     <section id="faq" aria-labelledby="faq-title" className="scroll-mt-16 bg-canvas py-24 lg:py-36">
       <Container wide className="grid gap-12 lg:grid-cols-[0.8fr_1.4fr] lg:gap-20">
         <div className="lg:sticky lg:top-28 lg:self-start">
-          <SectionHead id="faq-title" no="10" label="FAQ" title="Fragen." />
+          <SectionHead id="faq-title" label="FAQ" title="Häufige Fragen." />
           <p className="mt-6 text-[15px] leading-relaxed text-ink-2">
             Nicht dabei? Schreib an{" "}
             <a href={`mailto:${SITE.contactEmail}`} className="font-medium whitespace-nowrap text-ink underline decoration-gold-300 underline-offset-4 hover:decoration-gold-600">

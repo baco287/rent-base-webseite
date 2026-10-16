@@ -11,7 +11,8 @@ import { WhatsAppLink } from "./ui/whatsapp";
 
 type State = "idle" | "sending" | "ok" | "error";
 
-const FLEET = ["1–5", "6–10", "11–50", "51–100", "über 100"];
+// Abgestimmt auf die Tarifgrenzen (10 / 45 / 100 Fahrzeuge)
+const FLEET = ["1–10", "11–45", "46–100", "über 100"];
 
 const input =
   "mt-1.5 block w-full rounded-md border border-line-strong bg-white px-3.5 py-2.5 text-[15px] text-ink placeholder:text-ink-3/70 transition-colors focus:border-gold-500 focus:outline-none focus-visible:outline-none focus:ring-2 focus:ring-gold-300/50";

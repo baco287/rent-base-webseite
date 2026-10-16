@@ -1,48 +1,45 @@
-import { DashboardScreen } from "../mockups/desktop-screens";
-import { Container, SectionHead } from "../ui/primitives";
+import Image from "next/image";
+import { TRIAL } from "@/content/site";
+import bueroNacht from "../../../public/bilder/buero-nacht.webp";
+import { Laptop3D } from "../mockups/laptop-3d";
+import { Button } from "../ui/primitives";
 import { Parallax } from "../ui/parallax";
 
-// Bereiche der echten Startseite „Heute“ (src/app/(app)/heute, Stand 07.10.2026)
-const AREAS = [
-  ["Abholungen & Rückgaben", "Was heute vom Hof geht und zurückkommt, mit nächster Uhrzeit."],
-  ["Aktive Mieten & Flotte", "Laufende Vermietungen, Auslastung der nächsten 7 Tage, Fahrzeuge in der Werkstatt."],
-  ["Was braucht Aufmerksamkeit?", "Überfällig, heute, bald: Mieten, Kautionen, Fahrerprüfungen, Wartung."],
-  ["Finanzen, Schäden & Wartung", "Offene Rechnungen, Mahnungen, Kautionen und Schadenakten auf einen Klick."],
-];
+// Bereiche der echten Startseite „Heute“ (src/app/(app)/heute, Stand origin/main 16.10.2026)
+const AREAS = ["Abholungen und Rückgaben heute", "Aktive Mieten und Flotte", "Was braucht Aufmerksamkeit?", "Termine heute auf dem Hof"];
 
-/** Control Center: die Startseite „Heute“ groß, darunter eine knappe Legende statt Feature-Karten. */
+/** Collage-Fläche nach dem Referenzbild: dunkel mit Büro bei Nacht (KI-Bild), links Text, rechts Laptop in Perspektive. */
 export function Control() {
   return (
-    <section aria-labelledby="control-title" className="on-dark relative isolate overflow-hidden bg-night-2 py-24 lg:py-36">
-      <div aria-hidden className="engineering-grid absolute inset-0 -z-10 opacity-70" />
-      <Container wide>
-        <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-end">
-          <SectionHead id="control-title" no="06" label="Tagesübersicht" size="xl" title={<>Deine Vermietung<br />auf einen Blick.</>} />
-          <p className="lead max-w-md lg:justify-self-end lg:pb-3" data-reveal>
-            Die Startseite „Heute“ zeigt, was ansteht und was liegen geblieben ist. Jede Zeile führt direkt in den Vorgang.
-          </p>
-        </div>
-
-        <div className="mt-16 lg:mt-20" data-reveal>
-          <Parallax amount={22}>
-            <div className="overflow-hidden rounded-[10px] shadow-product max-sm:-mr-5">
-              <div className="max-sm:w-[175%]">
-                <DashboardScreen />
-              </div>
+    <section aria-labelledby="control-title" className="on-dark relative isolate overflow-hidden bg-night px-6 py-11 sm:px-10 sm:py-12 2xl:col-span-8 2xl:pr-14 2xl:pl-[max(4rem,calc(50vw-840px+4rem))] 2xl:min-h-[calc(100svh-2rem)] 2xl:flex 2xl:flex-col 2xl:justify-center">
+      <Image src={bueroNacht} alt="" sizes="(min-width: 1280px) 66vw, 100vw" className="absolute inset-0 -z-20 h-full w-full object-cover opacity-80" />
+      <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,#0b0d0f_0%,rgb(11_13_15/0.9)_35%,rgb(11_13_15/0.45)_75%,rgb(11_13_15/0.3)_100%)]" />
+      <div className="@container">
+        <div className="grid items-center gap-10 @3xl:grid-cols-[0.75fr_1.25fr] @3xl:gap-6">
+          <div className="min-w-0" data-reveal>
+            <p className="label label-dark">Dashboard</p>
+            <h2 id="control-title" className="display mt-4 text-[clamp(2rem,3.6vw,3.1rem)]">
+              Deine Vermietung
+              <br />
+              auf einen Blick.
+            </h2>
+            <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-white/70">Die Startseite „Heute“ zeigt, was ansteht und was liegen geblieben ist. Jede Zeile führt direkt in den Vorgang.</p>
+            <ul className="mt-6 space-y-2 border-l border-gold-400/40 pl-4">
+              {AREAS.map((a) => (
+                <li key={a} className="text-[14px] text-white/80">{a}</li>
+              ))}
+            </ul>
+            <div className="mt-8">
+              <Button href={TRIAL.href} variant="gold" size="lg" arrow>{TRIAL.label}</Button>
             </div>
-          </Parallax>
+          </div>
+          <div className="min-w-0 @3xl:pr-[2%]" data-reveal>
+            <Parallax amount={14}>
+              <Laptop3D className="drop-shadow-[0_34px_60px_rgb(0_0_0/0.7)]" />
+            </Parallax>
+          </div>
         </div>
-
-        <ol className="mt-14 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4" data-reveal>
-          {AREAS.map(([t, d], i) => (
-            <li key={t} className="border-t border-night-line pt-5">
-              <span className="font-mono text-[0.75rem] text-gold-300/80">{String(i + 1).padStart(2, "0")}</span>
-              <h3 className="mt-3 text-[1.05rem] font-semibold tracking-[-0.015em] text-white">{t}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/55">{d}</p>
-            </li>
-          ))}
-        </ol>
-      </Container>
+      </div>
     </section>
   );
 }

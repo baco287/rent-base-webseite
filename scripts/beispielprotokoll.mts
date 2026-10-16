@@ -112,6 +112,12 @@ async function examplePhoto(label: string) {
   return sharp(Buffer.from(svg)).jpeg({ quality: 88 }).toBuffer();
 }
 
+/** Fiktives Vermieterlogo „Muster Autovermietung“ (frei erfunden, keine echte Marke), wie es ein Mandant hochlädt. */
+async function landlordLogo() {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="900" height="260"><rect x="10" y="30" width="200" height="200" rx="36" fill="#16325c"/><path d="M58 180 L58 82 L110 140 L162 82 L162 180" fill="none" stroke="#ffffff" stroke-width="22" stroke-linejoin="round" stroke-linecap="round"/><text x="250" y="128" font-size="76" font-weight="700" font-family="Arial, sans-serif" fill="#16325c">MUSTER</text><text x="252" y="196" font-size="44" letter-spacing="6" font-family="Arial, sans-serif" fill="#5d6673">AUTOVERMIETUNG</text></svg>`;
+  return sharp(Buffer.from(svg)).png().toBuffer();
+}
+
 /** Fiktive Unterschrift (synthetischer Schriftzug), transparent. */
 async function signature(variant: 0 | 1) {
   // Frei gezeichnete Schleifen und Bögen, bewusst unleserlich: kein echter Name, keine echte Unterschrift
@@ -135,15 +141,31 @@ const base = data();
 // Prüfsumme wie im echten Protokoll: SHA-256 über den Dokumentinhalt (hier über die fiktiven Beispieldaten)
 const doc: HandoverDocumentData = { ...base, contentHash: createHash("sha256").update(JSON.stringify(base)).digest("hex") } as HandoverDocumentData;
 
+// Fotos: KI-erzeugte Beispielbilder (Rent-Base-Website/assets-ki, siehe LIZENZ.md), keine echten Fahrzeuge oder Kennzeichen.
+// Fehlende Motive als Ausschnitt eines vorhandenen Fotos: [Datei, links, oben, Breite, Höhe] in Pixeln.
+const KI = path.resolve(APP, "../Rent-Base-Website/assets-ki");
+const PHOTO_FILES: Record<string, [string, number?, number?, number?, number?]> = {
+  p0: ["foto-vorne.png"], p1: ["foto-hinten.png"], p2: ["foto-links.png"], p3: ["foto-rechts.png"], p4: ["foto-innenraum.png"],
+  p5: ["foto-kilometer.png"], p6: ["foto-kilometer.png", 600, 260, 600, 450],
+  "dp-1-0": ["foto-kratzer.png"], "dp-2-0": ["foto-vorne.png", 420, 120, 440, 330],
+  "dp-3-0": ["foto-rechts.png", 420, 240, 420, 315], "dp-3-1": ["foto-rechts.png", 520, 300, 300, 225],
+};
+async function kiPhoto(id: string, label: string) {
+  const f = PHOTO_FILES[id];
+  if (!f) return examplePhoto(label);
+  const img = sharp(path.join(KI, f[0]));
+  return (f[1] !== undefined ? img.extract({ left: f[1], top: f[2]!, width: f[3]!, height: f[4]! }) : img).resize(1600, 1200, { fit: "cover" }).jpeg({ quality: 86 }).toBuffer();
+}
 const photos = new Map<string, Uint8Array>();
 for (const p of [...doc.photos.map((x) => ({ id: x.id, label: x.categoryLabel })), ...doc.damages.flatMap((d) => d.photos.map((x) => ({ id: x.id, label: `Schaden ${d.index}` })))]) {
-  const small = await shrinkPhoto(await examplePhoto(p.label));
+  const small = await shrinkPhoto(await kiPhoto(p.id, p.label));
   if (small) photos.set(p.id, small);
 }
 const signatures = new Map<string, Uint8Array>([["sig-renter", await signature(0)], ["sig-employee", await signature(1)]]);
 const sketchSvg = await readFile(path.join(APP, "public", "sketches", "generic-transporter-v2.svg"), "utf8");
 
-const { bytes, trace } = await renderHandoverPdf(doc, { sketchSvg, photos, signatures });
+const logo = new Uint8Array(await landlordLogo());
+const { bytes, trace } = await renderHandoverPdf(doc, { logo, sketchSvg, photos, signatures });
 await mkdir(OUT, { recursive: true });
 await writeFile(path.join(OUT, "uebergabeprotokoll-beispiel.pdf"), bytes);
 console.log(`uebergabeprotokoll-beispiel.pdf ${Math.round(bytes.length / 1024)} KB, ${trace.pages} Seiten, Marker ${trace.markers.length}, Überläufe ${trace.boxes.filter((b) => b.overflow).length}, Hinweise: ${trace.notes.join("; ") || "keine"}`);

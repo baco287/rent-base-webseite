@@ -1,14 +1,12 @@
 import { SITE } from "@/content/site";
 import { FAQ } from "@/content/faq";
 import { Hero } from "@/components/sections/hero";
-import { Record } from "@/components/sections/record";
-import { Workflow } from "@/components/sections/workflow";
+import { Story } from "@/components/sections/story";
 import { Handover } from "@/components/sections/handover";
 import { Protocol } from "@/components/sections/protocol";
-import { Connected } from "@/components/sections/connected";
 import { Control } from "@/components/sections/control";
-import { Capabilities } from "@/components/sections/capabilities";
 import { OneSystem } from "@/components/sections/one-system";
+import { Capabilities } from "@/components/sections/capabilities";
 import { Pricing } from "@/components/sections/pricing";
 import { Faq } from "@/components/sections/faq";
 import { FinalCta } from "@/components/sections/final-cta";
@@ -36,18 +34,29 @@ export default function HomePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      {/* Collage-Raster nach dem Referenzbild: abgerundete Flächen, ab 1280 px zwei Flächen nebeneinander (8 + 4 Spalten) */}
+      {/* Einstieg randlos über den ganzen Bildschirm */}
       <Hero />
-      <Record />
-      <Workflow />
-      <Handover />
-      <Protocol />
-      <Connected />
-      <Control />
-      <Capabilities />
-      <OneSystem />
-      <Pricing />
-      <Faq />
-      <FinalCta />
+      <div className="grid 2xl:grid-cols-12">
+        {/* Jede Reihe ist ab 1536 px eine eigene, bildschirmfüllende „Seite“ */}
+        <Story />
+        <Protocol />
+        <Handover />
+        <Control />
+        <OneSystem />
+        <div className="2xl:col-span-12">
+          <Capabilities />
+        </div>
+        <div className="2xl:col-span-12">
+          <Pricing />
+        </div>
+        <div className="2xl:col-span-12">
+          <Faq />
+        </div>
+        <div className="2xl:col-span-12">
+          <FinalCta />
+        </div>
+      </div>
     </>
   );
 }

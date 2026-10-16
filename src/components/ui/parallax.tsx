@@ -36,7 +36,7 @@ export function Parallax({ amount = 40, className = "", children }: { amount?: n
   }, [amount]);
 
   return (
-    <div ref={ref} className={`will-change-transform ${className}`}>
+    <div ref={ref} className={className}>
       {children}
     </div>
   );

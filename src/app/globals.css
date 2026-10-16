@@ -1,25 +1,24 @@
 @import "tailwindcss";
 
 /*
- * RentBase Designsystem V2 – Premium Automotive × German Engineering × moderne B2B-Software.
+ * RentBase Designsystem V3 – nach dem Referenzbild vom 16.10.2026.
+ * Premium Automotive × German Engineering × Enterprise Software.
  *
- *   Nacht   #0B0C0D / #101112   Einstieg, Übergabe, Control Center, Abschluss
- *   Warm    #F7F5F1 / #FAF9F6   helle Produktflächen
- *   Tinte   #111315             Text auf hell
- *   Gold    aus dem Logo (Mittelton ≈ #906C3C, Licht ≈ #D4B27A) – nur Linien, Labels, aktive Zustände, einzelne Zahlen
+ *   Tiefschwarz #0B0D0F, Anthrazit #15191D   Einstieg, Tagesübersicht, Abschluss, Kopfzeile
+ *   Warmweiß    #F8F6F2, Weiß #FFFFFF         Produkt-Stories, Übergabe, Protokoll
+ *   Gold        aus dem Logo (#B8945B / #D4B27A), als Verlauf für Hauptknöpfe, sonst Linien, Labels, Icons
  *
- * Typografie: eine moderne Grotesk (Inter Variable, lokal) für alles, sehr groß und eng gesetzt in Headlines.
- * Technische Kennzeichnungen (Abschnittsnummern, Belegnummern, Spezifikationen) in Monospace.
+ * Typografie: Inter Variable (lokal) für Headlines und Text, kräftig und eng gesetzt. Labels in Versalien mit Sperrung.
  * Die klassische Serifen-Anmutung bleibt allein der Wortmarke vorbehalten.
  */
 @theme {
-  --color-night: #0b0c0d;
-  --color-night-2: #101112;
-  --color-night-3: #17191b;
+  --color-night: #0b0d0f;
+  --color-night-2: #15191d;
+  --color-night-3: #1c2126;
   --color-night-line: rgb(255 255 255 / 0.09);
 
-  --color-warm: #f7f5f1;
-  --color-warm-2: #faf9f6;
+  --color-warm: #f8f6f2;
+  --color-warm-2: #fbfaf7;
   --color-canvas: #ffffff;
 
   --color-ink: #111315;
@@ -104,13 +103,13 @@
 }
 
 @layer components {
-  /* Technische Kennzeichnung: „01 — Der Mietvorgang“ */
+  /* Abschnittslabel wie im Referenzbild: „DER MIETVORGANG“ */
   .label {
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     font-size: 0.72rem;
     line-height: 1rem;
-    font-weight: 500;
-    letter-spacing: 0.14em;
+    font-weight: 600;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--color-gold-600);
   }
@@ -121,9 +120,9 @@
   /* Große, eng gesetzte Headline */
   .display {
     font-family: var(--font-sans);
-    font-weight: 600;
-    letter-spacing: -0.04em;
-    line-height: 0.98;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.02;
     color: var(--color-ink);
     text-wrap: balance;
   }
@@ -142,6 +141,22 @@
   .hairline {
     height: 1px;
     background: var(--color-line);
+  }
+  /* Goldener Akzent im Text (Hero „Neu organisiert.“) */
+  .text-gold-gradient {
+    background: linear-gradient(100deg, #e7c88e 0%, #c9a15b 45%, #a8823f 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  /* Hauptknopf in Gold wie im Referenzbild */
+  .btn-gold {
+    background: linear-gradient(180deg, #dcbb7e 0%, #c49a55 55%, #b28745 100%);
+    color: #15120c;
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.35), 0 8px 24px -10px rgb(196 154 85 / 0.55);
+  }
+  .btn-gold:hover {
+    background: linear-gradient(180deg, #e5c78d 0%, #cfa762 55%, #bb914f 100%);
   }
   .gold-rule {
     height: 1px;

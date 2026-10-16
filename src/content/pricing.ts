@@ -1,5 +1,5 @@
 // Tarife: einzige Quelle für Preise, Fahrzeuglimits und Leistungen.
-// Stand 06.10.2026: Alle Funktionen sind derzeit in jedem Tarif enthalten; die Tarife unterscheiden sich nur nach Flottengröße.
+// Stand 16.10.2026 (Preiserhöhung 150 / 230 / 499 €, Business bis 45 Fahrzeuge): Alle Funktionen sind derzeit in jedem Tarif enthalten; die Tarife unterscheiden sich nur nach Flottengröße.
 
 export const PRICING_IS_PLACEHOLDER = false;
 export const PRICE_NOTE = "Alle Preise monatlich, zzgl. MwSt.";
@@ -17,9 +17,9 @@ export type Plan = {
 };
 
 export const PLANS: Plan[] = [
-  { id: "start", name: "Start", pricePerMonth: 120, vehicleLimit: 10, tagline: "Für kleine Vermieter." },
-  { id: "business", name: "Business", pricePerMonth: 200, vehicleLimit: 50, tagline: "Für wachsende Flotten.", recommended: true },
-  { id: "pro", name: "Pro", pricePerMonth: 290, vehicleLimit: 100, tagline: "Für große Flotten." },
+  { id: "start", name: "Start", pricePerMonth: 150, vehicleLimit: 10, tagline: "Für kleine Vermieter." },
+  { id: "business", name: "Business", pricePerMonth: 230, vehicleLimit: 45, tagline: "Für wachsende Flotten.", recommended: true },
+  { id: "pro", name: "Pro", pricePerMonth: 499, vehicleLimit: 100, tagline: "Für große Flotten." },
 ];
 
 /** In jedem Tarif enthalten. Nur Funktionen, die es in RentBase tatsächlich gibt. */

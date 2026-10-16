@@ -225,3 +225,83 @@ export function PhoneSignature() {
     </Scaled>
   );
 }
+
+/** Smartphone, Übergabe Schritt 3 von 8: Fahrzeugskizze mit Schäden (Hero und Übergabe-Story). */
+export function PhoneDamage() {
+  return (
+    <Scaled designWidth={16} label="RentBase Übergabe auf dem Smartphone, Schritt 3 von 8: Schäden auf der Fahrzeugskizze (Beispieldaten)">
+      <Phone>
+        <div className="bg-white px-[0.9em] pt-[2.1em] pb-[0.6em]">
+          <div className="mb-[0.45em] flex items-center justify-between">
+            <span className="text-[0.55em] font-semibold text-app-ink">Übergabe · 2026-0142</span>
+            <Plate>HB-RB 214</Plate>
+          </div>
+          <Progress steps={HANDOVER_STEPS} step={3} />
+          <div className="mt-[0.55em] text-[0.72em] font-semibold text-app-ink">Schritt 3 von 8: Schäden</div>
+        </div>
+        <div className="space-y-[0.5em] p-[0.8em]">
+          <div className="relative rounded-[0.45em] border border-app-line bg-white p-[0.35em]">
+            <Image src="/app/sketch-pkw.svg" alt="" width={1000} height={840} unoptimized className="h-auto w-full" />
+            <Marker x={87} y={21} n={1} shape="circle" />
+            <Marker x={29} y={70} n={2} shape="diamond" />
+          </div>
+          {[
+            { n: 1, t: "Kratzer Stoßfänger vorne", s: "bestehend", tone: "grey" as const },
+            { n: 2, t: "Delle Tür hinten links", s: "Vorschaden", tone: "amber" as const },
+          ].map((d) => (
+            <div key={d.n} className="flex items-center justify-between gap-[0.4em] rounded-[0.4em] border border-app-line bg-white px-[0.5em] py-[0.4em]">
+              <span className="truncate text-[0.52em] font-semibold text-app-ink">{d.n}. {d.t}</span>
+              <Chip tone={d.tone}>{d.s}</Chip>
+            </div>
+          ))}
+          <div className="rounded-[0.4em] bg-app-brand py-[0.55em] text-center text-[0.6em] font-semibold text-white">Weiter</div>
+        </div>
+      </Phone>
+    </Scaled>
+  );
+}
+
+/** Smartphone, Übergabe Schritt 8 von 8: Abschluss mit Zusammenfassung (für das Foto „Hand mit Smartphone“). */
+export function PhoneFinish() {
+  const rows: [string, string, boolean][] = [
+    ["Kilometerstand", "45.210 km", true],
+    ["Tankstand", "7/8", true],
+    ["Schäden", "1 bestehend · 1 Vorschaden", true],
+    ["Fotos", "alle Pflichtfotos, 9 gesamt", true],
+    ["Checkliste", "11 Punkte in Ordnung", true],
+    ["Zubehör", "Warndreieck, Weste, 2 Schlüssel", true],
+    ["Fahrer & Dokumente", "Führerschein geprüft", true],
+    ["Unterschrift Mieter", "Erfasst", true],
+  ];
+  return (
+    <Scaled designWidth={16} label="RentBase Übergabe auf dem Smartphone, Schritt 8 von 8: Abschluss mit Zusammenfassung (Beispieldaten)">
+      <Phone>
+        <div className="bg-white px-[0.9em] pt-[2.1em] pb-[0.6em]">
+          <div className="mb-[0.45em] flex items-center justify-between">
+            <span className="text-[0.55em] font-semibold text-app-ink">Übergabe · 2026-0142</span>
+            <Plate>HB-RB 214</Plate>
+          </div>
+          <Progress steps={HANDOVER_STEPS} step={8} />
+          <div className="mt-[0.55em] text-[0.72em] font-semibold text-app-ink">Schritt 8 von 8: Abschluss</div>
+        </div>
+        <div className="space-y-[0.55em] p-[0.8em]">
+          <ul className="divide-y divide-[#eef1f5] rounded-[0.45em] border border-app-line bg-white">
+            {rows.map(([k, v]) => (
+              <li key={k} className="flex items-center gap-[0.45em] px-[0.6em] py-[0.48em]">
+                <span className="flex size-[1.05em] shrink-0 items-center justify-center rounded-full bg-[#ddf0e3]">
+                  <Check className="size-[0.7em] text-[#2c7a4b]" strokeWidth={3} />
+                </span>
+                <span className="text-[0.5em] text-app-ink-3">{k}</span>
+                <span className="ml-auto text-right text-[0.5em] font-semibold text-app-ink">{v}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="rounded-[0.45em] border border-[#e9d9b8] bg-[#fdf8ee] px-[0.6em] py-[0.5em] text-[0.48em] leading-snug text-app-ink">
+            Mit dem Abschluss wird das Übergabeprotokoll als PDF erstellt und im Mietvorgang abgelegt.
+          </div>
+          <div className="rounded-[0.4em] bg-app-brand py-[0.6em] text-center text-[0.56em] font-semibold text-white">Übergabe verbindlich abschließen</div>
+        </div>
+      </Phone>
+    </Scaled>
+  );
+}

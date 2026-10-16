@@ -3,12 +3,12 @@ import { ArrowRight } from "lucide-react";
 import type { ComponentProps, ReactNode } from "react";
 
 export function Container({ className = "", wide = false, children }: { className?: string; wide?: boolean; children: ReactNode }) {
-  return <div className={`mx-auto w-full ${wide ? "max-w-[1440px]" : "max-w-[1240px]"} px-5 sm:px-8 lg:px-10 ${className}`}>{children}</div>;
+  return <div className={`mx-auto w-full ${wide ? "max-w-[1680px] 2xl:px-16" : "max-w-[1240px]"} px-5 sm:px-8 lg:px-10 ${className}`}>{children}</div>;
 }
 
 type ButtonProps = {
   href: string;
-  variant?: "primary" | "secondary" | "light" | "outline-light" | "ghost";
+  variant?: "primary" | "secondary" | "light" | "outline-light" | "ghost" | "gold" | "outline-gold";
   size?: "md" | "lg";
   arrow?: boolean;
   className?: string;
@@ -24,7 +24,10 @@ const variants = {
   ghost: "text-ink-2 hover:text-ink",
   /* auf dunkel */
   light: "bg-white text-ink hover:bg-gold-50",
-  "outline-light": "border border-white/20 text-white hover:border-white/55",
+  "outline-light": "border border-white/25 text-white hover:border-white/60 hover:bg-white/[0.04]",
+  /* Gold wie im Referenzbild: Hauptknopf gefüllt, in der Kopfzeile als Kontur */
+  gold: "btn-gold",
+  "outline-gold": "border border-gold-400/80 text-gold-300 hover:border-gold-300 hover:bg-gold-300/[0.06]",
 };
 const sizes = { md: "h-10 px-4 text-sm", lg: "h-[52px] px-6 text-[15px]" };
 
@@ -52,11 +55,10 @@ export function Button({ href, variant = "primary", size = "md", arrow = false, 
 }
 
 /**
- * Abschnittskopf im Stil eines technischen Dokuments: Nummer und Thema in Monospace, darunter eine große Headline.
+ * Abschnittskopf wie im Referenzbild: goldenes Label in Versalien, darunter eine kräftige Headline.
  * Auf dunklem Grund steht der Abschnitt in einem Element mit der Klasse „on-dark“.
  */
 export function SectionHead({
-  no,
   label,
   title,
   text,
@@ -65,6 +67,7 @@ export function SectionHead({
   className = "",
   size = "lg",
 }: {
+  /** veraltet: Abschnittsnummern werden in V3 nicht mehr angezeigt */
   no?: string;
   label: string;
   title: ReactNode;
@@ -76,12 +79,8 @@ export function SectionHead({
 }) {
   return (
     <div className={`${align === "center" ? "mx-auto text-center" : ""} ${className}`} data-reveal>
-      <p className={`label flex items-center gap-3 ${align === "center" ? "justify-center" : ""}`}>
-        {no && <span>{no}</span>}
-        {no && <span aria-hidden className="h-px w-8 bg-current opacity-60" />}
-        <span>{label}</span>
-      </p>
-      <h2 id={id} className={`display mt-6 ${size === "xl" ? "text-[clamp(2.4rem,7vw,5.25rem)]" : size === "md" ? "text-[clamp(2.2rem,4.2vw,3.4rem)]" : "text-[clamp(2.2rem,5.4vw,4.1rem)]"}`}>
+      <p className={`label ${align === "center" ? "text-center" : ""}`}>{label}</p>
+      <h2 id={id} className={`display mt-5 ${size === "xl" ? "text-[clamp(2.3rem,5.6vw,4.6rem)]" : size === "md" ? "text-[clamp(2rem,3.6vw,3rem)]" : "text-[clamp(2.15rem,4.4vw,3.6rem)]"}`}>
         {title}
       </h2>
       {text && <p className={`lead mt-6 max-w-[34rem] ${align === "center" ? "mx-auto" : ""}`}>{text}</p>}

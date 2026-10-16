@@ -40,10 +40,10 @@ function AttentionCard({ title, tone, rows }: { title: string; tone: Tone; rows:
   );
 }
 
-export function DashboardScreen() {
+export function DashboardScreen({ chrome = true }: { chrome?: boolean }) {
   return (
     <Scaled designWidth={64} label="RentBase Startseite „Heute“: Abholungen und Rückgaben des Tages, aktive Mieten, Flotte, offene Punkte und Termine auf dem Hof (Beispieldaten)">
-      <AppWindow url="app.rent-base.de/heute" active="Heute">
+      <AppWindow url="app.rent-base.de/heute" active="Heute" chrome={chrome}>
         <div className="space-y-[0.8em] p-[1.1em]">
           <div className="text-[1.25em] font-semibold tracking-[-0.01em] text-app-ink">Heute</div>
           <div className="grid grid-cols-4 gap-[0.6em]">
@@ -137,7 +137,7 @@ function Mark({ area, on }: { area: AreaKey; on: boolean }) {
   );
 }
 
-export function BookingScreen({ marks = false }: { marks?: boolean }) {
+export function BookingScreen({ marks = false, compact = false }: { marks?: boolean; compact?: boolean }) {
   const facts: [string, string, AreaKey?][] = [
     ["Vertrag", "MV-2026-0142 · unterschrieben", "vertrag"],
     ["Kunde", "Keller Logistik GmbH · K-00042", "kunde"],
@@ -152,8 +152,8 @@ export function BookingScreen({ marks = false }: { marks?: boolean }) {
     ["Mietvertrag", "MV-2026-0142", "unterschrieben", "vertrag"],
   ];
   return (
-    <Scaled designWidth={56} label="RentBase Buchungsdetail: ein Mietvorgang mit Vertrag, Kunde, Fahrzeug, Übergabe, Rückgabe, Schäden, Zahlungen und Rechnung (Beispieldaten)">
-      <AppWindow url="app.rent-base.de/buchungen/2026-0142" active="Buchungen" header={false}>
+    <Scaled designWidth={compact ? 44 : 56} label="RentBase Buchungsdetail: ein Mietvorgang mit Vertrag, Kunde, Fahrzeug, Übergabe, Rückgabe, Schäden, Zahlungen und Rechnung (Beispieldaten)">
+      <AppWindow url="app.rent-base.de/buchungen/2026-0142" active="Buchungen" header={false} compact={compact}>
         <div className="space-y-[0.8em] p-[1.2em]">
           <div className="relative flex items-center gap-[0.6em] pl-[0.2em]">
             <Mark area="buchung" on={marks} />

@@ -43,10 +43,10 @@ const NAV: { group?: string; items: { icon: typeof LayoutGrid; label: string; ba
 ];
 
 /** Browserfenster mit der echten RentBase-Shell. compact: ohne Seitenleiste, für kleinere Ausschnitte. */
-export function AppWindow({ url, active, children, compact = false, header = true }: { url: string; active?: string; children: ReactNode; compact?: boolean; header?: boolean }) {
+export function AppWindow({ url, active, children, compact = false, header = true, chrome = true }: { url: string; active?: string; children: ReactNode; compact?: boolean; header?: boolean; chrome?: boolean }) {
   return (
-    <div className="overflow-hidden rounded-[0.6em] bg-white ring-1 ring-black/10">
-      <div className="flex h-[2.1em] items-center gap-[0.4em] border-b border-[#e3e6ea] bg-[#f6f7f9] px-[0.8em]">
+    <div className={`overflow-hidden bg-white ${chrome ? "rounded-[0.6em] ring-1 ring-black/10" : ""}`}>
+      <div className={`${chrome ? "flex" : "hidden"} h-[2.1em] items-center gap-[0.4em] border-b border-[#e3e6ea] bg-[#f6f7f9] px-[0.8em]`}>
         <span className="size-[0.6em] rounded-full bg-[#d7dae0]" />
         <span className="size-[0.6em] rounded-full bg-[#d7dae0]" />
         <span className="size-[0.6em] rounded-full bg-[#d7dae0]" />
@@ -101,6 +101,21 @@ export function AppWindow({ url, active, children, compact = false, header = tru
           )}
           {children}
         </div>
+      </div>
+    </div>
+  );
+}
+
+/** Laptop wie im Referenzbild: schmaler dunkler Rahmen, Kamera, flacher Unterteil mit Griffmulde. */
+export function Laptop({ children, className = "" }: { children: ReactNode; className?: string }) {
+  return (
+    <div className={className}>
+      <div className="relative rounded-t-[1.1em] bg-[#0f1114] p-[0.7em] pb-[0.9em] ring-1 ring-white/12">
+        <span className="absolute top-[0.25em] left-1/2 size-[0.3em] -translate-x-1/2 rounded-full bg-[#2a2f35]" />
+        <div className="overflow-hidden rounded-[0.25em]">{children}</div>
+      </div>
+      <div className="relative mx-[-5%] h-[1.15em] rounded-b-[0.9em] bg-[linear-gradient(180deg,#3a3f46_0%,#23272c_45%,#121417_100%)] ring-1 ring-white/10">
+        <span className="absolute top-0 left-1/2 h-[0.4em] w-[14%] -translate-x-1/2 rounded-b-[0.4em] bg-[#15181c]" />
       </div>
     </div>
   );

@@ -40,7 +40,7 @@ export function MobileCta() {
       className={`fixed inset-x-0 bottom-0 z-30 border-t border-line bg-white/95 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-md transition-transform duration-300 lg:hidden ${show ? "translate-y-0" : "pointer-events-none translate-y-full"}`}
     >
       <div className="mx-auto flex max-w-md gap-2">
-        <a href={TRIAL.href} tabIndex={show ? 0 : -1} className="inline-flex h-12 flex-1 items-center justify-center rounded-md bg-ink text-[15px] font-medium text-white">
+        <a href={TRIAL.href} tabIndex={show ? 0 : -1} className="btn-gold inline-flex h-12 flex-1 items-center justify-center rounded-md text-[15px] font-semibold">
           {TRIAL.label}
         </a>
         <a
