@@ -50,6 +50,10 @@ export const FAQ: { q: string; a: string }[] = [
     a: "RentBase wird auf Servern in Deutschland betrieben. Die Daten jedes Vermieters sind von anderen Vermietern getrennt, und die Datenbank wird täglich gesichert.",
   },
   {
+    q: "Woher kommt RentBase?",
+    a: "RentBase wird in Deutschland entwickelt, in Berlin. Anbieter ist die Volt Gas UG (haftungsbeschränkt) mit Sitz in Berlin. Website und Anwendung laufen auf Servern der Hetzner Online GmbH in Deutschland.",
+  },
+  {
     q: "Kann ich RentBase kostenlos testen?",
     a: "Ja. Fülle das kurze Anfrageformular unten auf der Seite aus oder schreib uns per E-Mail an info@rent-base.de oder per WhatsApp an +49 179 1528109. Wir richten dir einen Testzugang ein und helfen beim Einstieg.",
   },

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { COMPANY } from "@/content/company";
-import { SITE, WHATSAPP } from "@/content/site";
+import { ORIGIN, SITE, WHATSAPP } from "@/content/site";
+import { GermanyMark } from "./ui/germany-mark";
 import { Container } from "./ui/primitives";
 import { Wordmark } from "./ui/logo";
 
@@ -27,6 +28,10 @@ export function SiteFooter() {
           <div>
             <Wordmark height={30} />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-3">Software für Fahrzeugvermieter.</p>
+            <p className="mt-3 flex items-center gap-2 text-sm font-medium text-ink-2">
+              <GermanyMark />
+              {ORIGIN.footer}
+            </p>
           </div>
           <nav aria-label="Footer">
             <ul className="flex flex-wrap gap-x-8 gap-y-3 text-[15px] font-medium text-ink-2">

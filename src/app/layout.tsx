@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: { default: SITE.title, template: "%s · RentBase" },
   description: SITE.description,
   applicationName: "RentBase",
-  keywords: ["Autovermietung Software", "Fahrzeugvermietung Software", "Vermietsoftware", "Fuhrparkverwaltung", "digitale Fahrzeugübergabe", "digitale Fahrzeugrückgabe", "Mietwagen Software"],
+  keywords: ["Autovermietung Software", "Fahrzeugvermietung Software", "Vermietsoftware", "Fuhrparkverwaltung", "digitale Fahrzeugübergabe", "digitale Fahrzeugrückgabe", "Mietwagen Software", "Vermietsoftware aus Deutschland"],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",

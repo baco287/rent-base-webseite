@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { CircleCheck, MonitorSmartphone, ServerCog } from "lucide-react";
-import { NAV, PRODUCT_LINK, SITE, TRIAL } from "@/content/site";
+import { NAV, ORIGIN, PRODUCT_LINK, SITE, TRIAL } from "@/content/site";
+import { GermanyMark } from "../ui/germany-mark";
 import heroNacht from "../../../public/bilder/hero-nacht.webp";
 import { Button } from "../ui/primitives";
 import { Wordmark } from "../ui/logo";
@@ -58,7 +59,11 @@ export function Hero() {
               <Button href={TRIAL.href} variant="gold" size="lg" arrow className="w-full sm:w-auto">{TRIAL.label}</Button>
               <Button href={PRODUCT_LINK.href} variant="outline-light" size="lg" className="w-full sm:w-auto">{PRODUCT_LINK.label}</Button>
             </div>
-            <ul className="mt-10 grid gap-4 sm:grid-cols-3 sm:gap-5" data-reveal>
+            <p className="mt-5 flex items-center gap-2.5 text-[13px] font-medium tracking-[0.02em] text-white/70" data-reveal>
+              <GermanyMark tone="dark" />
+              {ORIGIN.short}
+            </p>
+            <ul className="mt-9 grid gap-4 sm:grid-cols-3 sm:gap-5" data-reveal>
               {PERKS.map(({ icon: Icon, text }) => (
                 <li key={text} className="flex items-center gap-3 text-[13px] leading-snug text-white/75">
                   <Icon aria-hidden className="size-6 shrink-0 text-gold-300" strokeWidth={1.4} />

@@ -1,4 +1,5 @@
 import { SITE } from "@/content/site";
+import { COMPANY } from "@/content/company";
 import { FAQ } from "@/content/faq";
 import { Hero } from "@/components/sections/hero";
 import { Story } from "@/components/sections/story";
@@ -7,6 +8,7 @@ import { Protocol } from "@/components/sections/protocol";
 import { Control } from "@/components/sections/control";
 import { OneSystem } from "@/components/sections/one-system";
 import { Capabilities } from "@/components/sections/capabilities";
+import { Origin } from "@/components/sections/origin";
 import { Pricing } from "@/components/sections/pricing";
 import { Faq } from "@/components/sections/faq";
 import { FinalCta } from "@/components/sections/final-cta";
@@ -22,6 +24,12 @@ const jsonLd = [
     url: SITE.url,
     description: SITE.description,
     inLanguage: "de",
+    // Anbieter und Sitz laut Impressum; keine Bewertungen, Nutzerzahlen oder Zertifikate
+    provider: {
+      "@type": "Organization",
+      name: COMPANY.name,
+      address: { "@type": "PostalAddress", streetAddress: COMPANY.street, postalCode: COMPANY.zipCity.split(" ")[0], addressLocality: COMPANY.zipCity.split(" ").slice(1).join(" "), addressCountry: "DE" },
+    },
   },
   {
     "@context": "https://schema.org",
@@ -46,6 +54,9 @@ export default function HomePage() {
         <OneSystem />
         <div className="2xl:col-span-12">
           <Capabilities />
+        </div>
+        <div className="2xl:col-span-12">
+          <Origin />
         </div>
         <div className="2xl:col-span-12">
           <Pricing />

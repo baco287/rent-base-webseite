@@ -8,7 +8,19 @@ export const SITE = {
   contactEmail: "info@rent-base.de",
   title: "RentBase – Software für moderne Fahrzeugvermietung",
   description:
-    "RentBase verbindet Buchungen, Fahrzeuge, Kunden, digitale Übergaben, Rückgaben und Abrechnung in einer zentralen Software für Fahrzeugvermieter.",
+    "RentBase verbindet Buchungen, Fahrzeuge, Kunden, digitale Übergaben, Rückgaben und Abrechnung in einer zentralen Software für Fahrzeugvermieter – entwickelt in Deutschland.",
+} as const;
+
+/**
+ * Herkunft, sauber getrennt und geprüft (Stand 22.10.2026):
+ * - Entwicklung: vollständig in Deutschland (Berlin) – Angabe des Inhabers vom 22.10.2026
+ * - Unternehmenssitz: Volt Gas UG (haftungsbeschränkt), Berlin – siehe Impressum / company.ts
+ * - Hosting: Server bei Hetzner in Deutschland für Website und Anwendung – technisch belegt
+ * Bewusst NICHT behauptet: Zertifizierungen, Gütesiegel, „100 % DSGVO-konform“.
+ */
+export const ORIGIN = {
+  short: "Entwickelt in Deutschland",
+  footer: "RentBase – Entwickelt in Deutschland",
 } as const;
 
 /** WhatsApp-Kontakt für Anfragen und Testzugänge. Nummer im internationalen Format ohne +, Leerzeichen. */
